@@ -1,0 +1,276 @@
+{
+  "Actor": {
+    
+    
+    "types": ["character","nau","ameaca"],
+
+
+    "character": {
+      "selected": {
+        "eixo": "raiz",
+        "ritmo": "agil"
+      },
+      "jogador": "",
+      "povo": "", 
+      "registro": "",
+      "eixo": {
+        "raiz": {
+          "label": "Raiz",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "pulso": {
+          "label": "Pulso",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "sintonia": {
+          "label": "Sintonia",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "artificio": {
+          "label": "Artifício",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        }
+      },
+      "ritmo": {
+        "agil": {
+          "label": "Ágil",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "cuidadoso": {
+          "label": "Cuidadoso",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "esperto": {
+          "label": "Esperto",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "intenso": {
+          "label": "Intenso",
+          "die": {
+            "value": "d4",
+            "options": ["d4", "d6", "d8", "d10", "d12"]
+          }
+        }
+      },
+      "lastro": {
+        "base": 5,
+        "current": 5
+      },
+
+      "madicao": "",
+
+      "trunfos": [],
+
+      "cicatrizes": {
+        "slots": [false, false, false],
+        "morte": false
+      },
+      
+      "vicio": {
+        "slots": [false, false, false, false],
+        "resquimera": false
+      },
+      
+      "items": {
+        "carga": {
+          "selected": "normal",
+          "leve": {
+            "slots": [false, false, false]
+          },
+          "normal": {
+            "slots": [false, false, false, false, false]
+          },
+          "pesado": {
+            "slots": [false, false, false, false, false, false, false]
+          },
+          "posses": ""
+        }
+      },
+
+      "vinculos": [],
+
+      "ressonancia": {
+        "slots": [false, false, false, false, false],
+        "pontosAvanco": 0
+      },
+
+      "dadosExtras": {
+        "equipamento": {
+          "label": "Equipamento",
+          "die": {
+            "value": "none",
+            "options": ["none", "d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "espirito": {
+          "label": "Espírito",
+          "die": {
+            "value": "none",
+            "options": ["none", "d8", "d10"]
+          }
+        },
+        "ajuda": {
+          "label": "Ajuda",
+          "die": {
+            "value": "none",
+            "options": ["none", "d6"]
+          }
+        }
+      },
+      "dadosAtrito": {
+        "dado1": {
+          "label": "Dado 1",
+          "die": {
+            "value": "none",
+            "options": ["none", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "dado2": {
+          "label": "Dado 2",
+          "die": {
+            "value": "none",
+            "options": ["none", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "dado3": {
+          "label": "Dado 3",
+          "die": {
+            "value": "none",
+            "options": ["none", "d6", "d8", "d10", "d12"]
+          }
+        }
+      }
+    },
+    "nau": {
+      "selected": {
+        "eixo": "casco"
+      },
+      "chassi" : "",
+      "eixo": {
+        "casco": {
+          "label": "Casco",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        },
+        "motor": {
+          "label": "Motor",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        },
+        "sensores": {
+          "label": "Sensores",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        },
+        "velo": {
+          "label": "Velo",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        }
+      },
+      "ritmoPiloto": {
+        "die": {
+          "value": "d4",
+          "options": ["d4", "d6", "d8", "d10", "d12"]
+        }
+      },      
+      "integridade": {
+        "base": 0,
+        "current": 0
+      },
+      "recursos": {
+        "daeirum": {
+          "label": "Daeirum",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        },     
+        "suprimentos": {
+          "label": "Suprimentos",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        }, 
+        "lumens": 0,
+        "materia_prima": {
+          "label": "Matéria Prima",
+          "base": "d4",
+          "die": { "value": "d4", "options": ["d4", "d6", "d8", "d10", "d12"] }
+        }
+      },
+      "detalhes" :{
+        "peculiaridade": "", 
+        "melhorias" : []
+      },
+      "dadosExtras": {
+        "equipamento": {
+          "label": "Equipamento",
+          "die": {
+            "value": "none",
+            "options": ["none", "d4", "d6", "d8", "d10", "d12"]
+          }
+        },
+        "espirito": {
+          "label": "Espírito",
+          "die": {
+            "value": "none",
+            "options": ["none", "d8", "d10"]
+          }
+        },
+        "ajuda": {
+          "label": "Ajuda",
+          "die": {
+            "value": "none",
+            "options": ["none", "d6"]
+          }
+        }
+      },      
+      "dadosAtrito": {
+        "dado1": {
+          "label": "Dado 1",
+          "die": { "value": "none", "options": ["none", "d6", "d8", "d10", "d12"] }
+        },
+        "dado2": {
+          "label": "Dado 2",
+          "die": { "value": "none", "options": ["none", "d6", "d8", "d10", "d12"] }
+        },
+        "dado3": {
+          "label": "Dado 3",
+          "die": { "value": "none", "options": ["none", "d6", "d8", "d10", "d12"] }
+        }
+      }
+    },    
+
+
+
+
+    "ameaca": {
+        "nome": "", 
+        "type": ["lacaio", "adversario", "elite", "chefe", "lenda"],
+        "tipoSelecionado": "lacaio",
+        "resistencia": 0,
+        "descricao": "",
+        "especiais": []
+    }  
+    
+  }
+}

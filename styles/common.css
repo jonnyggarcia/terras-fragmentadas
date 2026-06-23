@@ -1,0 +1,421 @@
+.roll-tf {
+  background: #0a2aa9;
+  color: #111111;
+  border: 1px solid #000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.roll-tf:hover {
+  background: #fde047;
+  transform: scale(1.02);
+}
+
+.identidade-field {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.header-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.header-flex .profile-img {
+  flex-shrink: 0;
+}
+
+.header-flex .block.identidade {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===================== */
+/* CARGA */
+/* ===================== */
+
+.carga-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.carga-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  flex: 1;
+  min-width: 0;
+}
+
+.carga-option input[type="radio"] {
+  transform: scale(1.2);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.vantagem,
+.desvantagem {
+  font-weight: normal;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.vantagem {
+  color: #6fcf6f;
+}
+
+.desvantagem {
+  color: #e06666;
+}
+
+.carga-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(7, 24px);
+  gap: 6px;
+  justify-content: end;
+  flex-shrink: 0;
+}
+
+.carga-checkboxes input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.posses-block {
+  margin-top: 16px;
+}
+
+.posses-field {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.posses-field:focus {
+  outline: none;
+  border-color: #777;
+}
+
+.maldicao-block {
+  margin-top: 16px;
+}
+
+.maldicao-field {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.maldicao-field:focus {
+  outline: none;
+  border-color: #777;
+}
+
+.lumens-block {
+  margin-top: 16px;
+  max-width: 160px;
+}
+
+.lumens-field {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.lumens-field:focus {
+  outline: none;
+  border-color: #777;
+}
+
+/* ===================== */
+/* TRUNFOS */
+/* ===================== */
+
+.trunfo-row {
+  background: #161616;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.trunfo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.trunfo-tipo {
+  width: 50%;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: white;
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+.trunfo-tipo:focus {
+  outline: none;
+  border-bottom-color: #888;
+}
+
+.trunfo-nome {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+.trunfo-nome:focus {
+  outline: none;
+  border-bottom-color: #888;
+}
+
+.trunfo-descricao {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 13px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.remove-trunfo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-trunfo:hover {
+  opacity: 1;
+}
+
+.add-trunfo {
+  background: none;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+/* ===================== */
+/* CICATRIZES */
+/* ===================== */
+
+.cicatrizes-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cicatrizes-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.morte-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  font-weight: bold;
+  color: #e06666;
+}
+
+/* ===================== */
+/* VÍCIO */
+/* ===================== */
+
+.vicio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vicio-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.resquimera-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  font-weight: bold;
+  color: #e06666;
+}
+
+/* ===================== */
+/* VÍNCULOS */
+/* ===================== */
+
+.vinculo-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.vinculo-texto {
+  flex: 1;
+  background: #111;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 13px;
+}
+
+.vinculo-texto:focus {
+  outline: none;
+  border-color: #777;
+}
+
+.remove-vinculo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.7;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-vinculo:hover {
+  opacity: 1;
+}
+
+.add-vinculo {
+  background: none;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+/* ===================== */
+/* RESSONÂNCIA */
+/* ===================== */
+
+.ressonancia-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ressonancia-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.ressonancia-pontos {
+  max-width: 160px;
+}
+
+.ressonancia-pontos input[type="number"] {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.ressonancia-row button.clear-ressonancia {
+  background: #1a1a1a !important;
+  border: 1px solid #555 !important;
+  border-radius: 4px !important;
+  color: white !important;
+  cursor: pointer !important;
+  font-size: 11px !important;
+  opacity: 0.8;
+  width: 30px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  max-width: 30px !important;
+  flex: 0 0 30px !important;
+  padding: 0 !important;
+  margin: 0 0 0 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+}
+
+.ressonancia-row button.clear-ressonancia:hover {
+  opacity: 1;
+  border-color: #888 !important;
+}
+
+.ressonancia-row button.clear-ressonancia:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

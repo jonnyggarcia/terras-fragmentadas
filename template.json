@@ -1,11 +1,10 @@
 {
     "Actor": {
+                
+        "types": ["fendario", "nau", "ameaca"],
         
         
-        "types": ["character","nau","ameaca"],
-        
-        
-        "character": {
+        "fendario": {
             "selected": {
                 "eixo": "raiz",
                 "ritmo": "agil"
@@ -78,7 +77,10 @@
                 "current": 5
             },
             
-            "madicao": "",
+            "maldicao": {
+                "label": "maldicao",
+                "value": ""
+            },
             
             "trunfos": [],
             
@@ -103,8 +105,11 @@
                     },
                     "pesado": {
                         "slots": [false, false, false, false, false, false, false]
-                    },
-                    "posses": ""
+                    }
+                },                   
+                "posses": {
+                    "label" : "posses",
+                    "value" : ""
                 }
             },
             
@@ -162,6 +167,12 @@
                 }
             }
         },
+
+
+
+
+
+
         "nau": {
             "selected": {
                 "eixo": "casco"
@@ -261,6 +272,11 @@
         },    
         
         
+        
+
+
+
+
         
         
         "ameaca": {

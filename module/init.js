@@ -1,4 +1,4 @@
-import { CharacterSheet } from "./character.js";
+import { FendarioSheet } from "./fendario.js";
 import { NauSheet } from "./nau.js";
 import { AmeacaSheet } from "./ameaca.js";
 import { CountersHUD } from "./counter-hud.js";
@@ -12,10 +12,11 @@ Hooks.once("init", function () {
     
     foundry.documents.collections.Actors.registerSheet(
         "terras-fragmentadas",
-        CharacterSheet,
+        FendarioSheet,
         {
-            types: ["character"],
-            makeDefault: true
+            types: ["fendario"],
+            makeDefault: true,
+            label: "Fendário"
         }
     );
     
@@ -24,7 +25,8 @@ Hooks.once("init", function () {
         NauSheet,
         {
             types: ["nau"],
-            makeDefault: true
+            makeDefault: true,
+            label: "Nau"
         }
     );
     
@@ -33,7 +35,8 @@ Hooks.once("init", function () {
         AmeacaSheet,
         {
             types: ["ameaca"],
-            makeDefault: true
+            makeDefault: true,
+            label: "Ameaça"
         }
     );
     
@@ -46,9 +49,15 @@ Hooks.once("init", function () {
     
 });
 
+
+
+
+
+
+
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
     
-    if (data.type === "character") {
+    if (data.type === "fendario") {
         const defaults = {
             "system.selected": { eixo: "raiz", ritmo: "agil" },
             "system.jogador": "",
@@ -152,6 +161,11 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
     }
     
 });
+
+
+
+
+
 
 Hooks.once("ready", function () {
     CountersHUD.refreshAll();

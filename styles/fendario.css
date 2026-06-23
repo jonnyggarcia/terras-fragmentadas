@@ -42,6 +42,55 @@
     min-width: 0;
 }
 
+.inline-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inline-row label {
+    min-width: 80px;
+}
+
+.inline-row select {
+    width: auto;
+}
+
+
+/* ===================== */
+/* LASTRO */
+/* ===================== */
+
+.lastro-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lastro-minus,
+.lastro-plus {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #1a1a1a;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.lastro-minus:hover,
+.lastro-plus:hover {
+    border-color: #888;
+}
+
+.lastro-display {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
 /* ===================== */
 /* CARGA */
 /* ===================== */

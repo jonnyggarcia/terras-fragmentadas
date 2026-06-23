@@ -1,15 +1,20 @@
 const { mergeObject } = foundry.utils;
 
-export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
+export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
     
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            template: "systems/terras-fragmentadas/templates/actor/character-sheet.html",
-            classes: ["terras-fragmentadas", "sheet", "actor"]
+            template: "systems/terras-fragmentadas/templates/actor/fendario-sheet.html",
+            classes: ["terras-fragmentadas", "sheet", "Fendário"]
         });
     }
     
+
     
+    // =====================
+    // ROLL DICE
+    // =====================
+
     async _rollTF(event) {
         event.preventDefault();
         
@@ -96,7 +101,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         let coreSuccesses = 0;
         let coreOnes = 0;
         
-        let coreHTML = `<h3>Dados de Identidade</h3><ul>`;
+        let coreHTML = `<h3>`+game.i18n.localize("TEXTO.rolagem.identidade")+`</h3><ul>`;
         
         for (const p of core) {
             const roll = new Roll(`1d${p.sides}`);
@@ -110,17 +115,17 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
             if (total === 1) coreOnes++;
             
             coreHTML += `
-        <li>
-          <strong style="color:${p.color}">
-            ${p.label} (${p.type})
-          </strong>
-          :
-          <span style="color:${success ? "green" : "black"}">
-            ${total}
-          </span>
-        </li>
-      `;
-        }
+                <li>
+                <strong style="color:${p.color}">
+                    ${p.label} (${p.type})
+                </strong>
+                :
+                <span style="color:${success ? "green" : "black"}">
+                    ${total}
+                </span>
+                </li>
+            `;
+            }
         
         coreHTML += `</ul>`;
         
@@ -128,7 +133,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         // ATRITO ROLLS
         // =====================
         let atritoSuccesses = 0;
-        let atritoHTML = `<h3>Atrito</h3><ul>`;
+        let atritoHTML = `<h3>`+game.i18n.localize("TEXTO.rolagem.atrito")+`</h3><ul>`;
         
         for (const p of atrito) {
             const roll = new Roll(`1d${p.sides}`);
@@ -140,14 +145,14 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
             if (success) atritoSuccesses++;
             
             atritoHTML += `
-        <li>
-          <strong style="color:red">${p.label}</strong> :
-          <span style="color:${success ? "green" : "black"}">
-            ${total}
-          </span>
-        </li>
-      `;
-        }
+                <li>
+                <strong style="color:red">${p.label}</strong> :
+                <span style="color:${success ? "green" : "black"}">
+                    ${total}
+                </span>
+                </li>
+            `;
+            }
         
         atritoHTML += `</ul>`;
         
@@ -165,48 +170,47 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         let impact = "";
         
         if (isKatastrofe) {
-            impact = "KATASTROFE";
+            impact = game.i18n.localize("TEXTO.rolagem.katastrofe");
         } else if (finalSuccesses >= 3) {
-            impact = "Impacto Espetacular";
+            impact = game.i18n.localize("TEXTO.rolagem.impacto.esptacular");
         } else if (finalSuccesses === 1) {
-            impact = "Impacto Positivo";
+            impact = game.i18n.localize("TEXTO.rolagem.impacto.positivo");
         } else if (finalSuccesses === 0) {
-            impact = "Impacto Neutro";
+            impact = game.i18n.localize("TEXTO.rolagem.impacto.neutro");
         } else if (finalSuccesses === -1) {
-            impact = "Impacto Negativo";
+            impact = game.i18n.localize("TEXTO.rolagem.impacto.negativo");
         } else {
-            impact = "Impacto Desastroso";
+            impact = game.i18n.localize("TEXTO.rolagem.impacto.desastroso");
         }
         
         // =====================
         // OUTPUT
         // =====================
-        let html = `<h2>${actor.name} - Rolagem</h2>`;
+        let html = `<h2>${actor.name}`+game.i18n.localize("TEXTO.rolagem.acao")+`</h2>`;
         html += coreHTML;
         html += `<hr>`;
         html += atritoHTML;
         
         html += `
-      <hr>
-      <h3>Totais</h3>
-      <p><strong>Total de sucessos:</strong> ${finalSuccesses} - ${impact}</p>
-    `;
-        
+            <hr>
+            <h3>`+game.i18n.localize("TEXTO.rolagem.totais")+`</h3>
+            <p><strong>`+game.i18n.localize("TEXTO.rolagem.total-sucesso")+`</strong> ${finalSuccesses} - ${impact}</p>
+        `;
+                
         if (isKatastrofe) {
             html += `
-        <div style="
-          margin-top: 10px;
-          padding: 10px;
-          border: 2px solid red;
-          background: #220000;
-          color: red;
-          font-weight: bold;
-          font-size: 18px;
-          text-align: center;
-        ">
-          ☠ KATASTROFE ☠
-        </div>
-      `;
+                <div style="
+                    margin-top: 10px;
+                    padding: 10px;
+                    border: 2px solid red;
+                    background: #220000;
+                    color: red;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-align: center;
+                ">`+game.i18n.localize("TEXTO.rolagem.katastrofe")+`
+                </div>
+                `;
         }
         
         await ChatMessage.create({
@@ -236,9 +240,18 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
     
     activateListeners(html) {
         super.activateListeners(html);
-        
+
+        // =====================
+        // ROLL BUTTON
+        // =====================
+
         html.find(".roll-tf").on("click", this._rollTF.bind(this));
+
         
+        // =====================
+        // EDIT BUTTON
+        // =====================
+
         const locked = this.actor.getFlag("terras-fragmentadas", "baseLocked");
         
         html.find(".base-field").css("pointer-events", locked ? "none" : "auto");
@@ -254,14 +267,35 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
             html.find(".base-field").css("opacity", newState ? 0.5 : 1);
             
             ui.notifications.info(
-                newState ? "Valor Base bloqueado" : "Valor Base desbloqueado"
+                newState ? game.i18n.localize("TEXTO.anuncio.bloqueado") : game.i18n.localize("TEXTO.anuncio.desbloqueado")
             );
         });
         
         
         // =====================
+        // LASTRO
+        // =====================
+        
+        html.find(".lastro-plus").on("click", async () => {
+            const max = this.actor.system.lastro.base || 5;
+            const current = this.actor.system.lastro.current || 0;
+            const value = Math.min(current + 1, max);
+            await this.actor.update({ "system.lastro.current": value });
+        });
+        
+        html.find(".lastro-minus").on("click", async () => {
+            const current = this.actor.system.lastro.current || 0;
+            const value = Math.max(current - 1, 0);
+            await this.actor.update({ "system.lastro.current": value });
+        });
+        
+
+
+
+        // =====================
         // CARGA: only active row's checkboxes clickable
         // =====================
+        
         const updateCargaState = () => {
             const selected = this.actor.system?.items?.carga?.selected;
             
@@ -276,9 +310,12 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
                 .css("cursor", isActive ? "pointer" : "not-allowed");
             });
         };
-        
-        
+                
         updateCargaState();
+
+        // =====================
+        // CARGA: CLEAN CHECK BOX AFTER SELCTING A DIFERENT CARGA LEVEL
+        // =====================        
         
         html.find('input[name="system.items.carga.selected"]').on("change", async (event) => {
             const newSelected = event.currentTarget.value;
@@ -298,6 +335,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         // TRUNFOS
         // =====================
+
         html.find(".add-trunfo").on("click", async () => {
             const trunfos = foundry.utils.deepClone(this.actor.system.trunfos || []);
             trunfos.push({
@@ -345,6 +383,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         // VÍNCULOS
         // =====================
+
         html.find(".add-vinculo").on("click", async () => {
             const vinculos = foundry.utils.deepClone(this.actor.system.vinculos || []);
             vinculos.push({
@@ -372,6 +411,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         // RESSONÂNCIA: clear checkboxes
         // =====================
+
         html.find(".clear-ressonancia").on("click", async () => {
             const cleared = new Array(5).fill(false);
             await this.actor.update({ "system.ressonancia.slots": cleared });
@@ -382,6 +422,7 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         // CAP CURRENT DIE AT BASE VALUE
         // =====================
+        
         const DIE_ORDER = ["d4", "d6", "d8", "d10", "d12"];
         const dieIndex = (d) => DIE_ORDER.indexOf(d);
         
@@ -415,11 +456,6 @@ export class CharacterSheet extends foundry.appv1.sheets.ActorSheet {
         const path = "system.lastro";
         if (formData[path] !== undefined) {
             formData[path] = Number(formData[path]);
-        }
-        
-        const lumensPath = "system.items.lumens";
-        if (formData[lumensPath] !== undefined) {
-            formData[lumensPath] = Number(formData[lumensPath]);
         }
         
         const pontosPath = "system.ressonancia.pontosAvanco";

@@ -3,10 +3,14 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             template: "systems/terras-fragmentadas/templates/actor/nau-sheet.html",
-            classes: ["terras-fragmentadas", "sheet", "actor", "nau"]
+            classes: ["terras-fragmentadas", "sheet", "Nau"]
         });
     }
     
+
+
+
+
     getData() {
         return {
             actor: this.actor,
@@ -14,6 +18,10 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
         };
     }
     
+
+
+
+
     activateListeners(html) {
         super.activateListeners(html);
         
@@ -112,6 +120,12 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
             }
         });    
     }
+
+
+
+
+
+
     
     async _rollNau(event) {
         event.preventDefault();
@@ -227,11 +241,11 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
             if (success) atritoSuccesses++;
             
             atritoHTML += `
-            <li>
-            <strong style="color:red">${p.label}</strong> (d${p.sides}) :
-            <span style="color:${success ? "green" : "black"}">${total}</span>
-            </li>
-        `;
+                <li>
+                <strong style="color:red">${p.label}</strong> (d${p.sides}) :
+                <span style="color:${success ? "green" : "black"}">${total}</span>
+                </li>
+            `;
         }
         
         console.log("atrito Successes: " + atritoSuccesses);
@@ -275,26 +289,26 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
         html += atritoHTML;
         
         html += `
-      <hr>
-      <h3>Totais</h3>
-      <p><strong>Total de sucessos:</strong> ${finalSuccesses} - ${impact}</p>
-    `;
+            <hr>
+            <h3>Totais</h3>
+            <p><strong>Total de sucessos:</strong> ${finalSuccesses} - ${impact}</p>
+            `;
         
         if (isKatastrofe) {
             html += `
-        <div style="
-          margin-top: 10px;
-          padding: 10px;
-          border: 2px solid red;
-          background: #220000;
-          color: red;
-          font-weight: bold;
-          font-size: 18px;
-          text-align: center;
-        ">
-          ☠ KATASTROFE ☠
-        </div>
-      `;
+                <div style="
+                margin-top: 10px;
+                padding: 10px;
+                border: 2px solid red;
+                background: #220000;
+                color: red;
+                font-weight: bold;
+                font-size: 18px;
+                text-align: center;
+                ">
+                ☠ KATASTROFE ☠
+                </div>
+            `;
         }
         
         await ChatMessage.create({
@@ -320,11 +334,23 @@ export class NauSheet extends foundry.appv1.sheets.ActorSheet {
         await actor.update(updateData);
     }
     
+
+
+
+
+
     async _updateObject(event, formData) {
+
         const path = "system.integridade.current";
         if (formData[path] !== undefined) {
             formData[path] = Number(formData[path]);
         }
+
+        const lumensPath = "system.recursos.lumens";
+        if (formData[lumensPath] !== undefined) {
+            formData[lumensPath] = Number(formData[lumensPath]);
+        }
+
         const basePath = "system.integridade.base";
         if (formData[basePath] !== undefined) {
             formData[basePath] = Number(formData[basePath]);

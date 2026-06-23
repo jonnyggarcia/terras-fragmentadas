@@ -42,10 +42,7 @@
                 "placeholder" : "Descreva sua Maldição"
             },
             "trunfo": {
-                "label" : "Trunfo",
-                "tipo" : "Tipe",
-                "nome" : "Nome",
-                "descricao" : "Descrição"
+                "label" : "Trunfo"
             },
             "cicatrizes": {
                 "label" : "Cicatrizes",
@@ -71,8 +68,7 @@
                 }
             },
             "vinculos" : {
-                "label" : "Vínculos",
-                "placeholder" : "Vínculo"
+                "label" : "Vínculos"
             },
             "ressonancia" : {
                 "label" : "Ressonância",
@@ -174,28 +170,6 @@
             "especiais" : {
                 "label": "Especiais"
             }
-        }
-    },
-
-    "TEXTO": {
-        "rolagem" :{
-            "acao": " - rolagem",
-            "identidade": "Dados de Identidade",
-            "atrito": "Atrito",
-            "totais": "Totais",
-            "total-sucesso": "Total de sucessos:",             
-            "katastrofe": "KATASTROFE",
-            "impacto": {
-                "esptacular" : "Impacto  Espetacular",
-                "positivo" : "Impacto Positivo",
-                "neutro" : "Impacto Neutro",
-                "negativo" : "Impacto Negativo",
-                "desastroso" : "Impacto Desastroso"
-            }
-        },
-        "anuncio" :{
-            "bloqueado" : "Valor Base bloqueado",
-            "desbloqueado" : "Valor Base desbloqueado"
         }
     }
 }

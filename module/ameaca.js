@@ -25,6 +25,11 @@ export class AmeacaSheet extends foundry.appv1.sheets.ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
         
+
+        // =====================
+        // RESISTENCIA
+        // =====================
+
         const getMax = () => RESISTENCIA_MAX[this.actor.system.tipoSelecionado] ?? 1;
         
         const updateMaxDisplay = () => {

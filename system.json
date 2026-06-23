@@ -1,49 +1,49 @@
 {
-  "id": "terras-fragmentadas",
-  "title": "Terras Fragmentadas",
-  "description": "Sistema RPG Terras Fragmentadas",
-  "version": "1.0.0",
-  "compatibility": {
-    "minimum": 13,
-    "verified": 13
-  },
-  "authors": [
-    {"name": "Luiz Kalagar"}, 
-    {"name": "Jonny Garcia"}
-  ],
-  "esmodules": ["module/init.js"],
-  "styles": [
-    "styles/common.css",
-    "styles/character.css",
-    "styles/nau.css",
-    "styles/ameaca.css"
-  ],
+    "id": "terras-fragmentadas",
+    "title": "Terras Fragmentadas",
+    "description": "Sistema RPG Terras Fragmentadas",
+    "version": "1.0.0",
 
-  "actorTypes": {
-    "character": {
-      "label": "Personagem"
+    "manifest": "https://raw.githubusercontent.com/jonnyggarcia/terras-fragmentadas/main/system.json",
+    "download": "https://github.com/jonnyggarcia/terras-fragmentadas/releases/download/1.0.0-beta/terras-fragmentadas.zip",
+
+    "compatibility": {
+        "minimum": 13,
+        "verified": 13
     },
-    "nau": {
-      "label": "Nau"
+    
+    "authors": [
+        {"name": "Luiz Kalagar"}, 
+        {"name": "Jonny Garcia"}
+    ],
+    
+    "esmodules": ["module/init.js"],
+
+    "styles": [
+        "styles/common.css",
+        "styles/fendario.css",
+        "styles/nau.css",
+        "styles/ameaca.css"
+    ],
+
+    "types": {
+        "actor": [
+            "Fendário",
+            "Nau",
+            "Ameaça"
+        ]
     },
-    "ameaca": {
-      "label": "Ameaça"
-    }
-  },
-
-  "documentTypes": {
-    "Actor": {
-      "character": {},
-      "nau": {},
-      "ameaca": {}
-    }
-  },
-
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ]
+    
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "por",
+            "name": "Português Brasil",
+            "path": "lang/pt-BR.json"
+        }
+    ]
 }

@@ -16,7 +16,7 @@
     <!-- ===================== -->
     
     <section class="block tipo">
-        <h1>Tipo</h1>
+        <h1>{{localize "TF.ameaca.tipo.label"}}</h1>
         <select name="system.tipoSelecionado" class="tipo-select">
             {{#each system.type as |opt|}}
             <option value="{{opt}}" {{#if (eq opt ../system.tipoSelecionado)}}selected{{/if}}>
@@ -32,7 +32,7 @@
     <!-- ===================== -->
     
     <section class="block resistencia">
-        <h1>Resistência</h1>
+        <h1>{{localize "TF.ameaca.resistencia.label"}}</h1>
         <div class="resistencia-row">
             <button type="button" class="resistencia-minus">−</button>
             <button type="button" class="resistencia-plus">+</button>
@@ -47,7 +47,7 @@
     <!-- DESCRICAO -->
     <!-- ===================== -->
     <section class="block ameaca-descricao">
-        <h1>Descrição</h1>
+        <h1>{{localize "TF.ameaca.descricao.label"}}</h1>
         <div class="ameaca-descricao-block">
             <textarea
             name="system.descricao"
@@ -62,7 +62,7 @@
     
     <section class="block especiais">
         <div class="especial-header">
-            <h1>Especiais</h1>
+            <h1>{{localize "TF.ameaca.especiais.label"}}</h1>
             
         </div>
         

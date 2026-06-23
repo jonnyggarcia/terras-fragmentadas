@@ -1,82 +1,82 @@
 <form class="tf-sheet ameaca-sheet">
-
-
-  <!-- ===================== -->
-  <!-- IDENTIDADE  -->
-  <!-- ===================== -->
-  <section class="block identidade">
-    <header class="sheet-header">
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
-      <h1>{{actor.name}}</h1>
-    </header>
-  </section>
-
-  <!-- ===================== -->
-  <!-- TIPO -->
-  <!-- ===================== -->
-
-  <section class="block tipo">
-    <h1>Tipo</h1>
-    <select name="system.tipoSelecionado" class="tipo-select">
-      {{#each system.type as |opt|}}
-        <option value="{{opt}}" {{#if (eq opt ../system.tipoSelecionado)}}selected{{/if}}>
-          {{opt}}
-        </option>
-      {{/each}}
-    </select>
-  </section>
-
-
-  <!-- ===================== -->
-  <!-- RESISTENCIA -->
-  <!-- ===================== -->
-
-  <section class="block resistencia">
-    <h1>Resistência</h1>
-    <div class="resistencia-row">
-      <button type="button" class="resistencia-minus">−</button>
-      <button type="button" class="resistencia-plus">+</button>
-      <span class="resistencia-display">
-        <span class="resistencia-current">{{system.resistencia}}</span> / <span class="resistencia-max-value"></span>
-      </span>
-    </div>
-  </section>
-
-
-  <!-- ===================== -->
-  <!-- DESCRICAO -->
-  <!-- ===================== -->
-  <section class="block ameaca-descricao">
-    <h1>Descrição</h1>
-    <div class="ameaca-descricao-block">
-      <textarea
-        name="system.descricao"
-        class="ameaca-descricao-field"
-        rows="5">{{system.descricao}}</textarea>
-    </div>
-  </section>
-
-  <!-- ===================== -->
-  <!-- ESPECIAIS -->
-  <!-- ===================== -->
-
-  <section class="block especiais">
-    <div class="especial-header">
-      <h1>Especiais</h1>
-      
-    </div>
-
-    <div class="especial-list">
-      {{#each system.especiais as |e|}}
-        <div class="especial-row" data-especial-id="{{e.id}}">
-          <input type="text" class="especial-texto" data-id="{{e.id}}" value="{{e.texto}}" placeholder="Especial" />
-          <button type="button" class="remove-especial" data-id="{{e.id}}">🗑</button>
-        </div>
-      {{/each}}
-    </div>
-
-    <button type="button" class="add-especial">➕</button>
     
-  </section>
-
+    
+    <!-- ===================== -->
+    <!-- IDENTIDADE  -->
+    <!-- ===================== -->
+    <section class="block identidade">
+        <header class="sheet-header">
+            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+            <h1>{{actor.name}}</h1>
+        </header>
+    </section>
+    
+    <!-- ===================== -->
+    <!-- TIPO -->
+    <!-- ===================== -->
+    
+    <section class="block tipo">
+        <h1>Tipo</h1>
+        <select name="system.tipoSelecionado" class="tipo-select">
+            {{#each system.type as |opt|}}
+            <option value="{{opt}}" {{#if (eq opt ../system.tipoSelecionado)}}selected{{/if}}>
+                {{opt}}
+            </option>
+            {{/each}}
+        </select>
+    </section>
+    
+    
+    <!-- ===================== -->
+    <!-- RESISTENCIA -->
+    <!-- ===================== -->
+    
+    <section class="block resistencia">
+        <h1>Resistência</h1>
+        <div class="resistencia-row">
+            <button type="button" class="resistencia-minus">−</button>
+            <button type="button" class="resistencia-plus">+</button>
+            <span class="resistencia-display">
+                <span class="resistencia-current">{{system.resistencia}}</span> / <span class="resistencia-max-value"></span>
+            </span>
+        </div>
+    </section>
+    
+    
+    <!-- ===================== -->
+    <!-- DESCRICAO -->
+    <!-- ===================== -->
+    <section class="block ameaca-descricao">
+        <h1>Descrição</h1>
+        <div class="ameaca-descricao-block">
+            <textarea
+            name="system.descricao"
+            class="ameaca-descricao-field"
+            rows="5">{{system.descricao}}</textarea>
+        </div>
+    </section>
+    
+    <!-- ===================== -->
+    <!-- ESPECIAIS -->
+    <!-- ===================== -->
+    
+    <section class="block especiais">
+        <div class="especial-header">
+            <h1>Especiais</h1>
+            
+        </div>
+        
+        <div class="especial-list">
+            {{#each system.especiais as |e|}}
+            <div class="especial-row" data-especial-id="{{e.id}}">
+                <input type="text" class="especial-texto" data-id="{{e.id}}" value="{{e.texto}}" placeholder="Especial" />
+                <button type="button" class="remove-especial" data-id="{{e.id}}">🗑</button>
+            </div>
+            {{/each}}
+        </div>
+        
+        <button type="button" class="add-especial">➕</button>
+        
+    </section>
+    
 </form>

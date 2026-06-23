@@ -1,16 +1,16 @@
 {
-  "TF": {
-    "EIXO": "Eixo",
-    "RITMO": "Ritmo",
-    "LASTRO": "Lastro",
-    "DADOS_EXTRAS": "Dados Extras",
-    "DADOS_OPOSICAO": "Dados de Oposição"
-  },
-  "TYPES": {
-    "Actor": {
-      "character": "Fendário",
-      "nau": "Nau",
-      "ameaca": "Ameaça"
-    }
-  }  
+    "TF": {
+        "EIXO": "Eixo",
+        "RITMO": "Ritmo",
+        "LASTRO": "Lastro",
+        "DADOS_EXTRAS": "Dados Extras",
+        "DADOS_OPOSICAO": "Dados de Oposição"
+    },
+    "TYPES": {
+        "Actor": {
+            "character": "Fendário",
+            "nau": "Nau",
+            "ameaca": "Ameaça"
+        }
+    }  
 }

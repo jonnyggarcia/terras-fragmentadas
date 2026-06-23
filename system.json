@@ -45,8 +45,5 @@
       "name": "English",
       "path": "lang/en.json"
     }
-  ],
-
-  "url": "https://github.com/jonnyggarcia/terras-fragmentadas",
-  "manifest": "https://github.com/jonnyggarcia/terras-fragmentadas/system.json"
+  ]
 }

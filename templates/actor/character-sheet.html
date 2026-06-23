@@ -1,746 +1,746 @@
 <form class="tf-sheet">
-
-
-  <div class="header-flex">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
-
-
-    <!-- ===================== -->
-    <!-- IDENTIDADE -->
-    <!-- ===================== -->
-    <section class="block identidade">
-
-
-      <h2>
-        Identidade
-        <button type="button" class="unlock-base">🔓 Editar</button>
-      </h2>
-
     
-      <label>Nome</label>
-      <input 
-          type="text" 
-          name="actor.name" 
-          class="identidade-field" 
-          value="{{actor.name}}" />
-      <label>Jogador</label>
-      <input 
-          type="text" 
-          name="system.jogador" 
-          class="identidade-field" 
-          value="{{system.jogador}}" />
-      
-      <label>Povo</label>
-      <input 
-          type="text" 
-          name="system.povo" 
-          class="identidade-field" 
-          value="{{system.povo}}" />
-      
-      <label>Registro</label>
-      <input 
-          type="text" 
-          name="system.registro" 
-          class="identidade-field" 
-          value="{{system.registro}}" />
-      
-    </section>
-
-  </div>
-
-
-
-  <!-- ===================== -->
-  <!-- EIXO RITMO -->
-  <!-- ===================== -->
-  <section class="block eixo-ritmo">
-
-    <!-- EIXO/RITMO -->
-    <div class="subblock">
-
-      <!-- ===================== -->
-      <!-- EIXO -->
-      <!-- ===================== -->
-      <h3>Eixo</h3>
-
-      <div class="eixo-container">
-
-        <!-- RAIZ -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Raiz</label>
-
-              <!-- Valor Base -->
-              <select name="system.eixo.raiz.base" class="base-field">
-                {{#each system.eixo.raiz.die.options as |opt|}}
-                  <option value="{{opt}}"
-                    {{#if (eq opt ../system.eixo.raiz.base)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>        
-
-              <select name="system.eixo.raiz.die.value">
-                {{#each system.eixo.raiz.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.eixo.raiz.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
+    
+    <div class="header-flex">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+        
+        
+        <!-- ===================== -->
+        <!-- IDENTIDADE -->
+        <!-- ===================== -->
+        <section class="block identidade">
+            
+            
+            <h2>
+                Identidade
+                <button type="button" class="unlock-base">🔓 Editar</button>
+            </h2>
+            
+            
+            <label>Nome</label>
+            <input 
+            type="text" 
+            name="actor.name" 
+            class="identidade-field" 
+            value="{{actor.name}}" />
+            <label>Jogador</label>
+            <input 
+            type="text" 
+            name="system.jogador" 
+            class="identidade-field" 
+            value="{{system.jogador}}" />
+            
+            <label>Povo</label>
+            <input 
+            type="text" 
+            name="system.povo" 
+            class="identidade-field" 
+            value="{{system.povo}}" />
+            
+            <label>Registro</label>
+            <input 
+            type="text" 
+            name="system.registro" 
+            class="identidade-field" 
+            value="{{system.registro}}" />
+            
+        </section>
+        
+    </div>
+    
+    
+    
+    <!-- ===================== -->
+    <!-- EIXO RITMO -->
+    <!-- ===================== -->
+    <section class="block eixo-ritmo">
+        
+        <!-- EIXO/RITMO -->
+        <div class="subblock">
+            
+            <!-- ===================== -->
+            <!-- EIXO -->
+            <!-- ===================== -->
+            <h3>Eixo</h3>
+            
+            <div class="eixo-container">
+                
+                <!-- RAIZ -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>Raiz</label>
+                            
+                            <!-- Valor Base -->
+                            <select name="system.eixo.raiz.base" class="base-field">
+                                {{#each system.eixo.raiz.die.options as |opt|}}
+                                <option value="{{opt}}"
+                                {{#if (eq opt ../system.eixo.raiz.base)}}selected{{/if}}>
+                                {{opt}}
+                            </option>
+                            {{/each}}
+                        </select>        
+                        
+                        <select name="system.eixo.raiz.die.value">
+                            {{#each system.eixo.raiz.die.options as |opt|}}
+                            <option value="{{opt}}" {{#if (eq opt ../system.eixo.raiz.die.value)}}selected{{/if}}>
+                                {{opt}}
+                            </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="stat-radio">
+                    <input type="radio"
+                    name="system.selected.eixo"
+                    value="raiz"
+                    {{#if (eq system.selected.eixo "raiz")}}checked{{/if}} />
+                </div>
+                
             </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.eixo"
-              value="raiz"
-              {{#if (eq system.selected.eixo "raiz")}}checked{{/if}} />
-          </div>
-
-        </div>
-
-        <!-- PULSO -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Pulso</label>
-
-
-              <!-- Valor Base -->
-              <select name="system.eixo.pulso.base" class="base-field">
-                {{#each system.eixo.pulso.die.options as |opt|}}
-                  <option value="{{opt}}"
-                    {{#if (eq opt ../system.eixo.pulso.base)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>        
-
-
-              <select name="system.eixo.pulso.die.value">
-                {{#each system.eixo.pulso.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.eixo.pulso.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
+            
+            <!-- PULSO -->
+            <div class="stat-row">
+                
+                <div class="stat-select">
+                    <div class="inline-row">
+                        <label>Pulso</label>
+                        
+                        
+                        <!-- Valor Base -->
+                        <select name="system.eixo.pulso.base" class="base-field">
+                            {{#each system.eixo.pulso.die.options as |opt|}}
+                            <option value="{{opt}}"
+                            {{#if (eq opt ../system.eixo.pulso.base)}}selected{{/if}}>
+                            {{opt}}
+                        </option>
+                        {{/each}}
+                    </select>        
+                    
+                    
+                    <select name="system.eixo.pulso.die.value">
+                        {{#each system.eixo.pulso.die.options as |opt|}}
+                        <option value="{{opt}}" {{#if (eq opt ../system.eixo.pulso.die.value)}}selected{{/if}}>
+                            {{opt}}
+                        </option>
+                        {{/each}}
+                    </select>
+                </div>
             </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.eixo"
-              value="pulso"
-              {{#if (eq system.selected.eixo "pulso")}}checked{{/if}} />
-          </div>
-
+            
+            <div class="stat-radio">
+                <input type="radio"
+                name="system.selected.eixo"
+                value="pulso"
+                {{#if (eq system.selected.eixo "pulso")}}checked{{/if}} />
+            </div>
+            
         </div>
-
+        
         <!-- SINTONIA -->
         <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Sintonia</label>
-
-              <!-- Valor Base -->
-              <select name="system.eixo.sintonia.base" class="base-field">
-                {{#each system.eixo.sintonia.die.options as |opt|}}
-                  <option value="{{opt}}"
-                    {{#if (eq opt ../system.eixo.sintonia.base)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>        
-
-
-
-              <select name="system.eixo.sintonia.die.value">
-                {{#each system.eixo.sintonia.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.eixo.sintonia.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
+            
+            <div class="stat-select">
+                <div class="inline-row">
+                    <label>Sintonia</label>
+                    
+                    <!-- Valor Base -->
+                    <select name="system.eixo.sintonia.base" class="base-field">
+                        {{#each system.eixo.sintonia.die.options as |opt|}}
+                        <option value="{{opt}}"
+                        {{#if (eq opt ../system.eixo.sintonia.base)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>        
+                
+                
+                
+                <select name="system.eixo.sintonia.die.value">
+                    {{#each system.eixo.sintonia.die.options as |opt|}}
+                    <option value="{{opt}}" {{#if (eq opt ../system.eixo.sintonia.die.value)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>
             </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.eixo"
-              value="sintonia"
-              {{#if (eq system.selected.eixo "sintonia")}}checked{{/if}} />
-          </div>
-
         </div>
-
-        <!-- ARTIFICIO -->
-        <div class="stat-row">
-
-          <div class="stat-select">
+        
+        <div class="stat-radio">
+            <input type="radio"
+            name="system.selected.eixo"
+            value="sintonia"
+            {{#if (eq system.selected.eixo "sintonia")}}checked{{/if}} />
+        </div>
+        
+    </div>
+    
+    <!-- ARTIFICIO -->
+    <div class="stat-row">
+        
+        <div class="stat-select">
             <div class="inline-row">
-              <label>Artifício</label>
-
-              <!-- Valor Base -->
-              <select name="system.eixo.artificio.base" class="base-field">
-                {{#each system.eixo.artificio.die.options as |opt|}}
-                  <option value="{{opt}}"
+                <label>Artifício</label>
+                
+                <!-- Valor Base -->
+                <select name="system.eixo.artificio.base" class="base-field">
+                    {{#each system.eixo.artificio.die.options as |opt|}}
+                    <option value="{{opt}}"
                     {{#if (eq opt ../system.eixo.artificio.base)}}selected{{/if}}>
                     {{opt}}
-                  </option>
+                </option>
                 {{/each}}
-              </select>        
-
-
-              <select name="system.eixo.artificio.die.value">
+            </select>        
+            
+            
+            <select name="system.eixo.artificio.die.value">
                 {{#each system.eixo.artificio.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.eixo.artificio.die.value)}}selected{{/if}}>
+                <option value="{{opt}}" {{#if (eq opt ../system.eixo.artificio.die.value)}}selected{{/if}}>
                     {{opt}}
-                  </option>
+                </option>
                 {{/each}}
-              </select>
-            </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.eixo"
-              value="artificio"
-              {{#if (eq system.selected.eixo "artificio")}}checked{{/if}} />
-          </div>
-
+            </select>
         </div>
-
-      </div>
-
-
-      <!-- ===================== -->
-      <!-- RITMO -->
-      <!-- ===================== -->
-      <h3>Ritmo</h3>
-
-      <div class="ritmo-container">
-
-        <!-- ÁGIL -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Ágil</label>
-              <select name="system.ritmo.agil.die.value">
-                {{#each system.ritmo.agil.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.ritmo.agil.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
-            </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.ritmo"
-              value="agil"
-              {{#if (eq system.selected.ritmo "agil")}}checked{{/if}} />
-          </div>
-
-        </div>
-
-        <!-- CUIDADOSO -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Cuidadoso</label>
-              <select name="system.ritmo.cuidadoso.die.value">
-                {{#each system.ritmo.cuidadoso.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.ritmo.cuidadoso.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
-            </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.ritmo"
-              value="cuidadoso"
-              {{#if (eq system.selected.ritmo "cuidadoso")}}checked{{/if}} />
-          </div>
-
-        </div>
-
-        <!-- ESPERTO -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Esperto</label>
-              <select name="system.ritmo.esperto.die.value">
-                {{#each system.ritmo.esperto.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.ritmo.esperto.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
-            </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.ritmo"
-              value="esperto"
-              {{#if (eq system.selected.ritmo "esperto")}}checked{{/if}} />
-          </div>
-
-        </div>
-
-        <!-- INTENSO -->
-        <div class="stat-row">
-
-          <div class="stat-select">
-            <div class="inline-row">
-              <label>Intenso</label>
-              <select name="system.ritmo.intenso.die.value">
-                {{#each system.ritmo.intenso.die.options as |opt|}}
-                  <option value="{{opt}}" {{#if (eq opt ../system.ritmo.intenso.die.value)}}selected{{/if}}>
-                    {{opt}}
-                  </option>
-                {{/each}}
-              </select>
-            </div>
-          </div>
-
-          <div class="stat-radio">
-            <input type="radio"
-              name="system.selected.ritmo"
-              value="intenso"
-              {{#if (eq system.selected.ritmo "intenso")}}checked{{/if}} />
-          </div>
-
-        </div>
-
-      </div>
-
-
     </div>
+    
+    <div class="stat-radio">
+        <input type="radio"
+        name="system.selected.eixo"
+        value="artificio"
+        {{#if (eq system.selected.eixo "artificio")}}checked{{/if}} />
+    </div>
+    
+</div>
 
-  </section>
+</div>
+
+
+<!-- ===================== -->
+<!-- RITMO -->
+<!-- ===================== -->
+<h3>Ritmo</h3>
+
+<div class="ritmo-container">
+    
+    <!-- ÁGIL -->
+    <div class="stat-row">
+        
+        <div class="stat-select">
+            <div class="inline-row">
+                <label>Ágil</label>
+                <select name="system.ritmo.agil.die.value">
+                    {{#each system.ritmo.agil.die.options as |opt|}}
+                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.agil.die.value)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        
+        <div class="stat-radio">
+            <input type="radio"
+            name="system.selected.ritmo"
+            value="agil"
+            {{#if (eq system.selected.ritmo "agil")}}checked{{/if}} />
+        </div>
+        
+    </div>
+    
+    <!-- CUIDADOSO -->
+    <div class="stat-row">
+        
+        <div class="stat-select">
+            <div class="inline-row">
+                <label>Cuidadoso</label>
+                <select name="system.ritmo.cuidadoso.die.value">
+                    {{#each system.ritmo.cuidadoso.die.options as |opt|}}
+                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.cuidadoso.die.value)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        
+        <div class="stat-radio">
+            <input type="radio"
+            name="system.selected.ritmo"
+            value="cuidadoso"
+            {{#if (eq system.selected.ritmo "cuidadoso")}}checked{{/if}} />
+        </div>
+        
+    </div>
+    
+    <!-- ESPERTO -->
+    <div class="stat-row">
+        
+        <div class="stat-select">
+            <div class="inline-row">
+                <label>Esperto</label>
+                <select name="system.ritmo.esperto.die.value">
+                    {{#each system.ritmo.esperto.die.options as |opt|}}
+                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.esperto.die.value)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        
+        <div class="stat-radio">
+            <input type="radio"
+            name="system.selected.ritmo"
+            value="esperto"
+            {{#if (eq system.selected.ritmo "esperto")}}checked{{/if}} />
+        </div>
+        
+    </div>
+    
+    <!-- INTENSO -->
+    <div class="stat-row">
+        
+        <div class="stat-select">
+            <div class="inline-row">
+                <label>Intenso</label>
+                <select name="system.ritmo.intenso.die.value">
+                    {{#each system.ritmo.intenso.die.options as |opt|}}
+                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.intenso.die.value)}}selected{{/if}}>
+                        {{opt}}
+                    </option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        
+        <div class="stat-radio">
+            <input type="radio"
+            name="system.selected.ritmo"
+            value="intenso"
+            {{#if (eq system.selected.ritmo "intenso")}}checked{{/if}} />
+        </div>
+        
+    </div>
+    
+</div>
+
+
+</div>
+
+</section>
 
 
 
 
 
-  <!-- ===================== -->
-  <!-- LASTRO -->
-  <!-- ===================== -->
-  <section class="block lastro">
-
+<!-- ===================== -->
+<!-- LASTRO -->
+<!-- ===================== -->
+<section class="block lastro">
+    
     <h2>Lastro  </h2>
-
+    
     <div class="inline-row">
-      <div>
-        <label>Base</label>
-        <input
-          type="number"
-          name="system.lastro.base"
-          value="{{system.lastro.base}}"
-          class="base-field"
-        />
-      </div>
-
-      <div>
-        <label>Atual</label>
-        <input
-          type="number"
-          name="system.lastro.current"
-          value="{{system.lastro.current}}"
-        />
-      </div>
-
+        <div>
+            <label>Base</label>
+            <input
+            type="number"
+            name="system.lastro.base"
+            value="{{system.lastro.base}}"
+            class="base-field"
+            />
+        </div>
+        
+        <div>
+            <label>Atual</label>
+            <input
+            type="number"
+            name="system.lastro.current"
+            value="{{system.lastro.current}}"
+            />
+        </div>
+        
     </div>
-<br>
+    <br>
     <div>
-      <label>Forçar o Limite(2)</label>
-    </div>
-    <div>
-      <label>Resistir à Consequência(1-3)</label>
+        <label>Forçar o Limite(2)</label>
     </div>
     <div>
-      <label>A Ruptura</label>
+        <label>Resistir à Consequência(1-3)</label>
     </div>
+    <div>
+        <label>A Ruptura</label>
+    </div>
+    
+</section>
 
-  </section>
 
 
-
-  <!-- ===================== -->
-  <!-- MALDIÇÃO -->
-  <!-- ===================== -->
-  <section class="block maldicao">
+<!-- ===================== -->
+<!-- MALDIÇÃO -->
+<!-- ===================== -->
+<section class="block maldicao">
     <div class="maldicao-block">
-      <h3 class="subtitle">Maldição</h3>
-      <textarea
+        <h3 class="subtitle">Maldição</h3>
+        <textarea
         name="system.items.maldicao"
         class="maldicao-field"
         rows="4"
-      >{{system.items.maldicao}}</textarea>
+        >{{system.items.maldicao}}</textarea>
     </div>  
-  </section>
+</section>
 
 
 
-  <!-- ===================== -->
-  <!-- TRUNFOS -->
-  <!-- ===================== -->
-  <section class="block trunfos">
-
+<!-- ===================== -->
+<!-- TRUNFOS -->
+<!-- ===================== -->
+<section class="block trunfos">
+    
     <h2>
-      Trunfos
-      
+        Trunfos
+        
     </h2>
-
+    
     <div class="trunfos-list">
-      {{#each system.trunfos as |t|}}
+        {{#each system.trunfos as |t|}}
         <div class="trunfo-row" data-trunfo-id="{{t.id}}">
-
-          <div class="trunfo-header">
-            <input type="text" class="trunfo-tipo" data-id="{{t.id}}" value="{{t.tipo}}" placeholder="Tipo" />
-            <input type="text" class="trunfo-nome" data-id="{{t.id}}" value="{{t.nome}}" placeholder="Nome do Trunfo" />
-            <button type="button" class="remove-trunfo" data-id="{{t.id}}">🗑</button>
-          </div>
-
-          <textarea class="trunfo-descricao" data-id="{{t.id}}" rows="3" placeholder="Descrição...">{{t.descricao}}</textarea>
-
+            
+            <div class="trunfo-header">
+                <input type="text" class="trunfo-tipo" data-id="{{t.id}}" value="{{t.tipo}}" placeholder="Tipo" />
+                <input type="text" class="trunfo-nome" data-id="{{t.id}}" value="{{t.nome}}" placeholder="Nome do Trunfo" />
+                <button type="button" class="remove-trunfo" data-id="{{t.id}}">🗑</button>
+            </div>
+            
+            <textarea class="trunfo-descricao" data-id="{{t.id}}" rows="3" placeholder="Descrição...">{{t.descricao}}</textarea>
+            
         </div>
-      {{/each}}
+        {{/each}}
     </div>
-
+    
     <button type="button" class="add-trunfo">➕</button>
-
-  </section>
-
-
+    
+</section>
 
 
-  <!-- ===================== -->
-  <!-- CICATRIZES -->
-  <!-- ===================== -->
-  <section class="block cicatrizes">
 
+
+<!-- ===================== -->
+<!-- CICATRIZES -->
+<!-- ===================== -->
+<section class="block cicatrizes">
+    
     <h2>Cicatrizes</h2>
-
+    
     <div class="cicatrizes-row">
-
-      {{#each system.cicatrizes.slots as |slot i|}}
+        
+        {{#each system.cicatrizes.slots as |slot i|}}
         <input type="checkbox"
-          name="system.cicatrizes.slots.{{i}}"
-          {{#if slot}}checked{{/if}} />
-      {{/each}}
-
-      <label class="morte-label">
-        <input type="checkbox"
-          name="system.cicatrizes.morte"
-          {{#if system.cicatrizes.morte}}checked{{/if}} />
-        Morte
-      </label>
-
+        name="system.cicatrizes.slots.{{i}}"
+        {{#if slot}}checked{{/if}} />
+        {{/each}}
+        
+        <label class="morte-label">
+            <input type="checkbox"
+            name="system.cicatrizes.morte"
+            {{#if system.cicatrizes.morte}}checked{{/if}} />
+            Morte
+        </label>
+        
     </div>
-
-  </section>
-
-
+    
+</section>
 
 
-  <!-- ===================== -->
-  <!-- VÍCIO -->
-  <!-- ===================== -->
-  <section class="block vicio">
 
+
+<!-- ===================== -->
+<!-- VÍCIO -->
+<!-- ===================== -->
+<section class="block vicio">
+    
     <h2>Vício</h2>
-
+    
     <div class="vicio-row">
-
-      {{#each system.vicio.slots as |slot i|}}
+        
+        {{#each system.vicio.slots as |slot i|}}
         <input type="checkbox"
-          name="system.vicio.slots.{{i}}"
-          {{#if slot}}checked{{/if}} />
-      {{/each}}
-
-      <label class="resquimera-label">
-        <input type="checkbox"
-          name="system.vicio.resquimera"
-          {{#if system.vicio.resquimera}}checked{{/if}} />
-        Resquimera
-      </label>
-
+        name="system.vicio.slots.{{i}}"
+        {{#if slot}}checked{{/if}} />
+        {{/each}}
+        
+        <label class="resquimera-label">
+            <input type="checkbox"
+            name="system.vicio.resquimera"
+            {{#if system.vicio.resquimera}}checked{{/if}} />
+            Resquimera
+        </label>
+        
     </div>
+    
+</section>
 
-  </section>
 
 
-  
 
-  <!-- ===================== -->
-  <!-- ITEMS -->
-  <!-- ===================== -->
-  <section class="block items">
-
+<!-- ===================== -->
+<!-- ITEMS -->
+<!-- ===================== -->
+<section class="block items">
+    
     <h2>Items</h2>
     <h3 class="subtitle">Carga</h3>
-
+    
     <!-- LEVE -->
     <div class="carga-row" data-carga-level="leve">
-      <label class="carga-option">
-        <input type="radio"
-          name="system.items.carga.selected"
-          value="leve"
-          {{#if (eq system.items.carga.selected "leve")}}checked{{/if}} />
-        Leve
-        <span class="vantagem">(Vantagem Furtividade/Agilidade)</span>
-      </label>
-
-      <div class="carga-checkboxes">
-        {{#each system.items.carga.leve.slots as |slot i|}}
-          <input type="checkbox"
+        <label class="carga-option">
+            <input type="radio"
+            name="system.items.carga.selected"
+            value="leve"
+            {{#if (eq system.items.carga.selected "leve")}}checked{{/if}} />
+            Leve
+            <span class="vantagem">(Vantagem Furtividade/Agilidade)</span>
+        </label>
+        
+        <div class="carga-checkboxes">
+            {{#each system.items.carga.leve.slots as |slot i|}}
+            <input type="checkbox"
             name="system.items.carga.leve.slots.{{i}}"
             {{#if slot}}checked{{/if}} />
-        {{/each}}
-      </div>
+            {{/each}}
+        </div>
     </div>
-
+    
     <!-- NORMAL -->
     <div class="carga-row" data-carga-level="normal">
-      <label class="carga-option">
-        <input type="radio"
-          name="system.items.carga.selected"
-          value="normal"
-          {{#if (eq system.items.carga.selected "normal")}}checked{{/if}} />
-        Normal
-      </label>
-
-      <div class="carga-checkboxes">
-        {{#each system.items.carga.normal.slots as |slot i|}}
-          <input type="checkbox"
+        <label class="carga-option">
+            <input type="radio"
+            name="system.items.carga.selected"
+            value="normal"
+            {{#if (eq system.items.carga.selected "normal")}}checked{{/if}} />
+            Normal
+        </label>
+        
+        <div class="carga-checkboxes">
+            {{#each system.items.carga.normal.slots as |slot i|}}
+            <input type="checkbox"
             name="system.items.carga.normal.slots.{{i}}"
             {{#if slot}}checked{{/if}} />
-        {{/each}}
-      </div>
+            {{/each}}
+        </div>
     </div>
-
+    
     <!-- PESADO -->
     <div class="carga-row" data-carga-level="pesado">
-      <label class="carga-option">
-        <input type="radio"
-          name="system.items.carga.selected"
-          value="pesado"
-          {{#if (eq system.items.carga.selected "pesado")}}checked{{/if}} />
-        Pesado
-        <span class="desvantagem">(Desvantagem Furtividade/Agilidade)</span>
-      </label>
-
-      <div class="carga-checkboxes">
-        {{#each system.items.carga.pesado.slots as |slot i|}}
-          <input type="checkbox"
+        <label class="carga-option">
+            <input type="radio"
+            name="system.items.carga.selected"
+            value="pesado"
+            {{#if (eq system.items.carga.selected "pesado")}}checked{{/if}} />
+            Pesado
+            <span class="desvantagem">(Desvantagem Furtividade/Agilidade)</span>
+        </label>
+        
+        <div class="carga-checkboxes">
+            {{#each system.items.carga.pesado.slots as |slot i|}}
+            <input type="checkbox"
             name="system.items.carga.pesado.slots.{{i}}"
             {{#if slot}}checked{{/if}} />
-        {{/each}}
-      </div>
+            {{/each}}
+        </div>
     </div>
-
-
+    
+    
     <!-- ===================== -->
     <!-- POSSES -->
     <!-- ===================== -->
     <div class="posses-block">
-      <h3 class="subtitle">Posses</h3>
-      <textarea
+        <h3 class="subtitle">Posses</h3>
+        <textarea
         name="system.items.posses"
         class="posses-field"
         rows="4"
         placeholder="Liste seus itens, equipamentos e posses..."
-      >{{system.items.posses}}</textarea>
+        >{{system.items.posses}}</textarea>
     </div>  
+    
+</section>
 
-  </section>
 
-
-  <!-- ===================== -->
-  <!-- VÍNCULOS -->
-  <!-- ===================== -->
-  <section class="block vinculos">
-
+<!-- ===================== -->
+<!-- VÍNCULOS -->
+<!-- ===================== -->
+<section class="block vinculos">
+    
     <h2>
-      Vínculos
+        Vínculos
     </h2>
-
+    
     <div class="vinculos-list">
-      {{#each system.vinculos as |v|}}
+        {{#each system.vinculos as |v|}}
         <div class="vinculo-row" data-vinculo-id="{{v.id}}">
-
-          <input type="text" class="vinculo-texto" data-id="{{v.id}}" value="{{v.texto}}" placeholder="Vínculo" />
-          <button type="button" class="remove-vinculo" data-id="{{v.id}}">🗑</button>
-
+            
+            <input type="text" class="vinculo-texto" data-id="{{v.id}}" value="{{v.texto}}" placeholder="Vínculo" />
+            <button type="button" class="remove-vinculo" data-id="{{v.id}}">🗑</button>
+            
         </div>
-      {{/each}}
+        {{/each}}
     </div>
-
+    
     <button type="button" class="add-vinculo">➕</button>
-
-  </section>  
-
-
+    
+</section>  
 
 
 
-  <!-- ===================== -->
-  <!-- RESSONÂNCIA -->
-  <!-- ===================== -->
-  <section class="block ressonancia">
 
+
+<!-- ===================== -->
+<!-- RESSONÂNCIA -->
+<!-- ===================== -->
+<section class="block ressonancia">
+    
     <h2>
-      Ressonância
+        Ressonância
     </h2>
-
+    
     <div class="ressonancia-row">
-      {{#each system.ressonancia.slots as |slot i|}}
+        {{#each system.ressonancia.slots as |slot i|}}
         <input type="checkbox"
-          name="system.ressonancia.slots.{{i}}"
-          {{#if slot}}checked{{/if}} />
-      {{/each}}
-
-      <button type="button" class="clear-ressonancia" title="Limpar">🧹</button>
+        name="system.ressonancia.slots.{{i}}"
+        {{#if slot}}checked{{/if}} />
+        {{/each}}
+        
+        <button type="button" class="clear-ressonancia" title="Limpar">🧹</button>
     </div>
-
-
-
+    
+    
+    
     <div class="ressonancia-pontos">
-      <label>Pontos de Avanço</label>
-      <input type="number" name="system.ressonancia.pontosAvanco" value="{{system.ressonancia.pontosAvanco}}" />
+        <label>Pontos de Avanço</label>
+        <input type="number" name="system.ressonancia.pontosAvanco" value="{{system.ressonancia.pontosAvanco}}" />
     </div>
+    
+    
+    
+</section>
 
 
 
-  </section>
-
-
-
-  <!-- ===================== -->
-  <!-- DADOS EXTRAS -->
-  <!-- ===================== -->
-  <section class="block extras">
-
+<!-- ===================== -->
+<!-- DADOS EXTRAS -->
+<!-- ===================== -->
+<section class="block extras">
+    
     <h2>Dados Extras</h2>
-
+    
     <div class="grid-3">
-
-      <div>
-        <label>Equipamento</label>
-
-        <div class="radio-group">
-          {{#each system.dadosExtras.equipamento.die.options as |opt|}}
-            <label class="radio-option">
-              <input
-                type="radio"
-                name="system.dadosExtras.equipamento.die.value"
-                value="{{opt}}"
-                {{#if (eq opt ../system.dadosExtras.equipamento.die.value)}}checked{{/if}}
-              />
-              {{opt}}
-            </label>
-          {{/each}}
+        
+        <div>
+            <label>Equipamento</label>
+            
+            <div class="radio-group">
+                {{#each system.dadosExtras.equipamento.die.options as |opt|}}
+                <label class="radio-option">
+                    <input
+                    type="radio"
+                    name="system.dadosExtras.equipamento.die.value"
+                    value="{{opt}}"
+                    {{#if (eq opt ../system.dadosExtras.equipamento.die.value)}}checked{{/if}}
+                    />
+                    {{opt}}
+                </label>
+                {{/each}}
+            </div>
         </div>
-      </div>
-
-      <div>
-        <label>Espírito</label>
-
-        <div class="radio-group">
-          {{#each system.dadosExtras.espirito.die.options as |opt|}}
-            <label class="radio-option">
-              <input
-                type="radio"
-                name="system.dadosExtras.espirito.die.value"
-                value="{{opt}}"
-                {{#if (eq opt ../system.dadosExtras.espirito.die.value)}}checked{{/if}}
-              />
-              {{opt}}
-            </label>
-          {{/each}}
+        
+        <div>
+            <label>Espírito</label>
+            
+            <div class="radio-group">
+                {{#each system.dadosExtras.espirito.die.options as |opt|}}
+                <label class="radio-option">
+                    <input
+                    type="radio"
+                    name="system.dadosExtras.espirito.die.value"
+                    value="{{opt}}"
+                    {{#if (eq opt ../system.dadosExtras.espirito.die.value)}}checked{{/if}}
+                    />
+                    {{opt}}
+                </label>
+                {{/each}}
+            </div>
         </div>
-      </div>
-
-      <div>
-        <label>Ajuda</label>
-
-        <div class="radio-group">
-          {{#each system.dadosExtras.ajuda.die.options as |opt|}}
-            <label class="radio-option">
-              <input
-                type="radio"
-                name="system.dadosExtras.ajuda.die.value"
-                value="{{opt}}"
-                {{#if (eq opt ../system.dadosExtras.ajuda.die.value)}}checked{{/if}}
-              />
-              {{opt}}
-            </label>
-          {{/each}}
+        
+        <div>
+            <label>Ajuda</label>
+            
+            <div class="radio-group">
+                {{#each system.dadosExtras.ajuda.die.options as |opt|}}
+                <label class="radio-option">
+                    <input
+                    type="radio"
+                    name="system.dadosExtras.ajuda.die.value"
+                    value="{{opt}}"
+                    {{#if (eq opt ../system.dadosExtras.ajuda.die.value)}}checked{{/if}}
+                    />
+                    {{opt}}
+                </label>
+                {{/each}}
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 
 
 
-  <!-- ===================== -->
-  <!-- DADOS DE ATRITO -->
-  <!-- ===================== -->
-  <section class="block oposicao">
-
+<!-- ===================== -->
+<!-- DADOS DE ATRITO -->
+<!-- ===================== -->
+<section class="block oposicao">
+    
     <h2>Dados de Atrito</h2>
-
+    
     <div class="grid-3">
-
-      <div>
-        <label>Dado 1</label>
-        <select name="system.dadosAtrito.dado1.die.value">
-          {{#each system.dadosAtrito.dado1.die.options as |opt|}}
-            <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado1.die.value)}}selected{{/if}}>
-              {{opt}}
-            </option>
-          {{/each}}
-        </select>
-      </div>
-
-      <div>
-        <label>Dado 2</label>
-        <select name="system.dadosAtrito.dado2.die.value">
-          {{#each system.dadosAtrito.dado2.die.options as |opt|}}
-            <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado2.die.value)}}selected{{/if}}>
-              {{opt}}
-            </option>
-          {{/each}}
-        </select>
-      </div>
-
-      <div>
-        <label>Dado 3</label>
-        <select name="system.dadosAtrito.dado3.die.value">
-          {{#each system.dadosAtrito.dado3.die.options as |opt|}}
-            <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado3.die.value)}}selected{{/if}}>
-              {{opt}}
-            </option>
-          {{/each}}
-        </select>
-      </div>
-
+        
+        <div>
+            <label>Dado 1</label>
+            <select name="system.dadosAtrito.dado1.die.value">
+                {{#each system.dadosAtrito.dado1.die.options as |opt|}}
+                <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado1.die.value)}}selected{{/if}}>
+                    {{opt}}
+                </option>
+                {{/each}}
+            </select>
+        </div>
+        
+        <div>
+            <label>Dado 2</label>
+            <select name="system.dadosAtrito.dado2.die.value">
+                {{#each system.dadosAtrito.dado2.die.options as |opt|}}
+                <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado2.die.value)}}selected{{/if}}>
+                    {{opt}}
+                </option>
+                {{/each}}
+            </select>
+        </div>
+        
+        <div>
+            <label>Dado 3</label>
+            <select name="system.dadosAtrito.dado3.die.value">
+                {{#each system.dadosAtrito.dado3.die.options as |opt|}}
+                <option value="{{opt}}" {{#if (eq opt ../system.dadosAtrito.dado3.die.value)}}selected{{/if}}>
+                    {{opt}}
+                </option>
+                {{/each}}
+            </select>
+        </div>
+        
     </div>
-  </section>
+</section>
 
 
 
@@ -752,19 +752,19 @@
 
 
 <style>
-  .inline-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .inline-row label {
-    min-width: 80px;
-  }
-
-  .inline-row select {
-    width: auto;
-  }
+    .inline-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .inline-row label {
+        min-width: 80px;
+    }
+    
+    .inline-row select {
+        width: auto;
+    }
 </style>
 
 </form>

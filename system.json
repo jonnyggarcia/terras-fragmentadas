@@ -5,7 +5,7 @@
     "version": "1.0.1",
 
     "manifest": "https://raw.githubusercontent.com/jonnyggarcia/terras-fragmentadas/main/system.json",
-    "download": "https://github.com/jonnyggarcia/terras-fragmentadas/releases/download/1.0.1/terras-fragmentadas-1.0.1.zip",
+    "download": "https://github.com/jonnyggarcia/terras-fragmentadas/releases/download/v1.0.1/tf-v1.0.1.zip",
 
     "compatibility": {
         "minimum": 13,

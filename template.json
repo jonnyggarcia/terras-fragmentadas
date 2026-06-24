@@ -10,8 +10,34 @@
                 "ritmo": "agil"
             },
             "jogador": "",
-            "povo": "", 
-            "registro": "",
+            "povo": {
+                "label": "Povo",
+                "type": "String",
+                "choices": [
+                    "humano",
+                    "ayana",
+                    "baax",
+                    "chartergus",
+                    "guldari",
+                    "illiam",
+                    "namnaram"
+                ],
+                "value": "humano"
+            },
+            "registro": {
+                "label": "Registro",
+                "type": "String",
+                "choices": [
+                    "aco", 
+                    "codice", 
+                    "elo", 
+                    "nauta", 
+                    "numemante", 
+                    "numetrcnico", 
+                    "rastro"
+                ],
+                "value": "nauta"
+            },                  
             "eixo": {
                 "raiz": {
                     "label": "Raiz",
@@ -120,14 +146,11 @@
                 "pontosAvanco": 0
             },
             
-            "dadosExtras": {
-                "equipamento": {
-                    "label": "Equipamento",
-                    "die": {
-                        "value": "none",
-                        "options": ["none", "d4", "d6", "d8", "d10", "d12"]
-                    }
-                },
+            "dadosExtras": {              
+                
+                "diceOptionsEquipamento": ["none", "d4", "d6", "d8", "d10", "d12"],
+                "equipamentos": [],
+                "equipamentoSelecionado": "",
                 "espirito": {
                     "label": "Espírito",
                     "die": {
@@ -143,6 +166,8 @@
                     }
                 }
             },
+
+
             "dadosAtrito": {
                 "dado1": {
                     "label": "Dado 1",

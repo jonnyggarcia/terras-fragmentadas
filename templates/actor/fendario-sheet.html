@@ -32,19 +32,30 @@
             value="{{system.jogador}}" />
             
             <label>{{localize "TF.fendario.identidade.povo"}}</label>
-            <input 
-            type="text" 
-            name="system.povo" 
-            class="identidade-field" 
-            value="{{system.povo}}" />
+            <select name="system.povo">
+                {{#select system.povo}}
+                    <option value="humano">{{localize "TF.povo.humano"}}</option>
+                    <option value="ayana">{{localize "TF.povo.ayana"}}</option>
+                    <option value="baax">{{localize "TF.povo.baax"}}</option>
+                    <option value="chartergus">{{localize "TF.povo.chartergus"}}</option>
+                    <option value="guldari">{{localize "TF.povo.guldari"}}</option>
+                    <option value="illiam">{{localize "TF.povo.illiam"}}</option>
+                    <option value="namnaram">{{localize "TF.povo.namnaram"}}</option>
+                {{/select}}
+            </select>
             
             <label>{{localize "TF.fendario.identidade.registro"}}</label>
-            <input 
-            type="text" 
-            name="system.registro" 
-            class="identidade-field" 
-            value="{{system.registro}}" />
-            
+            <select name="system.registro">
+                 {{#select system.registro}}
+                    <option value="aco">{{localize "TF.registro.aco"}}</option>
+                    <option value="codice">{{localize "TF.registro.codice"}}</option>
+                    <option value="elo">{{localize "TF.registro.elo"}}</option>
+                    <option value="nauta">{{localize "TF.registro.nauta"}}</option>
+                    <option value="numemante">{{localize "TF.registro.numemante"}}</option>
+                    <option value="numetecnico">{{localize "TF.registro.numetecnico"}}</option>
+                    <option value="rastro">{{localize "TF.registro.rastro"}}</option>
+                {{/select}}
+            </select> 
         </section>
         
     </div>
@@ -56,715 +67,782 @@
     <!-- ===================== -->
     <section class="block eixo-ritmo">
         
-        <!-- EIXO/RITMO -->
+        <!-- ===================== -->
+        <!-- EIXO -->
+        <!-- ===================== -->
         <div class="subblock">
-            
-            <!-- ===================== -->
-            <!-- EIXO -->
-            <!-- ===================== -->
             <h2>{{localize "TF.fendario.eixo.label"}}</h2>
-            
+
             <div class="eixo-container">
-                
+
                 <!-- RAIZ -->
                 <div class="stat-row">
                     
                     <div class="stat-select">
                         <div class="inline-row">
-                            <label>{{localize "TF.fendario.eixo.label"}}</label>
+                            <label>{{localize "TF.fendario.eixo.raiz"}}</label>
                             
                             <!-- Valor Base -->
                             <select name="system.eixo.raiz.base" class="base-field">
                                 {{#each system.eixo.raiz.die.options as |opt|}}
                                 <option value="{{opt}}"
-                                {{#if (eq opt ../system.eixo.raiz.base)}}selected{{/if}}>
-                                {{opt}}
-                            </option>
-                            {{/each}}
-                        </select>        
+                                    {{#if (eq opt ../system.eixo.raiz.base)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>        
                         
-                        <select name="system.eixo.raiz.die.value">
-                            {{#each system.eixo.raiz.die.options as |opt|}}
-                            <option value="{{opt}}" {{#if (eq opt ../system.eixo.raiz.die.value)}}selected{{/if}}>
-                                {{opt}}
-                            </option>
-                            {{/each}}
-                        </select>
+                            <!-- CURRENT VALUE -->
+                            <select name="system.eixo.raiz.die.value">
+                                {{#each system.eixo.raiz.die.options as |opt|}}
+                                <option value="{{opt}}" {{#if (eq opt ../system.eixo.raiz.die.value)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.eixo"
+                        value="raiz"
+                        {{#if (eq system.selected.eixo "raiz")}}checked{{/if}} />
+                    </div>
+                    
+                </div>
+                
+                <!-- PULSO -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.eixo.pulso"}}</label>
+                            
+                            
+                            <!-- Valor Base -->
+                            <select name="system.eixo.pulso.base" class="base-field">
+                                {{#each system.eixo.pulso.die.options as |opt|}}
+                                    <option value="{{opt}}"
+                                        {{#if (eq opt ../system.eixo.pulso.base)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>        
+                        
+                            <!-- CURRENT VALUE -->
+                            <select name="system.eixo.pulso.die.value">
+                                {{#each system.eixo.pulso.die.options as |opt|}}
+                                <option value="{{opt}}" {{#if (eq opt ../system.eixo.pulso.die.value)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.eixo"
+                        value="pulso"
+                        {{#if (eq system.selected.eixo "pulso")}}checked{{/if}} />
                     </div>
                 </div>
                 
-                <div class="stat-radio">
+                <!-- SINTONIA -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.eixo.sintonia"}}</label>
+                            
+                            <!-- Valor Base -->
+                            <select name="system.eixo.sintonia.base" class="base-field">
+                                {{#each system.eixo.sintonia.die.options as |opt|}}
+                                    <option value="{{opt}}"
+                                        {{#if (eq opt ../system.eixo.sintonia.base)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>        
+                        
+                        
+                        
+                            <select name="system.eixo.sintonia.die.value">
+                                {{#each system.eixo.sintonia.die.options as |opt|}}
+                                    <option value="{{opt}}" {{#if (eq opt ../system.eixo.sintonia.die.value)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.eixo"
+                        value="sintonia"
+                        {{#if (eq system.selected.eixo "sintonia")}}checked{{/if}} />
+                    </div>
+
+                </div>
+    
+                <!-- ARTIFICIO -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.eixo.artificio"}}</label>
+                            
+                            <!-- Valor Base -->
+                            <select name="system.eixo.artificio.base" class="base-field">
+                                {{#each system.eixo.artificio.die.options as |opt|}}
+                                    <option value="{{opt}}"
+                                        {{#if (eq opt ../system.eixo.artificio.base)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>        
+                        
+                        
+                            <select name="system.eixo.artificio.die.value">
+                                {{#each system.eixo.artificio.die.options as |opt|}}
+                                    <option value="{{opt}}" {{#if (eq opt ../system.eixo.artificio.die.value)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>    
+
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.eixo"
+                        value="artificio"
+                        {{#if (eq system.selected.eixo "artificio")}}checked{{/if}} />
+                    </div>
+
+                </div>            
+            </div>
+        </div>
+
+
+
+        <!-- ===================== -->
+        <!-- RITMO -->
+        <!-- ===================== -->
+        <div class="subblock">
+            <h2>{{localize "TF.fendario.ritmo.label"}}</h2>
+
+            <div class="ritmo-container">
+            
+                <!-- ÁGIL -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.ritmo.agil"}}</label>
+                            <select name="system.ritmo.agil.die.value">
+                                {{#each system.ritmo.agil.die.options as |opt|}}
+                                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.agil.die.value)}}selected{{/if}}>
+                                        {{opt}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.ritmo"
+                        value="agil"
+                        {{#if (eq system.selected.ritmo "agil")}}checked{{/if}} />
+                    </div>
+                    
+                </div>
+                
+                <!-- CUIDADOSO -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.ritmo.cuidadoso"}}</label>
+                            <select name="system.ritmo.cuidadoso.die.value">
+                                {{#each system.ritmo.cuidadoso.die.options as |opt|}}
+                                <option value="{{opt}}" {{#if (eq opt ../system.ritmo.cuidadoso.die.value)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.ritmo"
+                        value="cuidadoso"
+                        {{#if (eq system.selected.ritmo "cuidadoso")}}checked{{/if}} />
+                    </div>
+                    
+                </div>
+                
+                <!-- ESPERTO -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.ritmo.esperto"}}</label>
+                            <select name="system.ritmo.esperto.die.value">
+                                {{#each system.ritmo.esperto.die.options as |opt|}}
+                                <option value="{{opt}}" {{#if (eq opt ../system.ritmo.esperto.die.value)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.ritmo"
+                        value="esperto"
+                        {{#if (eq system.selected.ritmo "esperto")}}checked{{/if}} />
+                    </div>
+                    
+                </div>
+                
+                <!-- INTENSO -->
+                <div class="stat-row">
+                    
+                    <div class="stat-select">
+                        <div class="inline-row">
+                            <label>{{localize "TF.fendario.ritmo.intenso"}}</label>
+                            <select name="system.ritmo.intenso.die.value">
+                                {{#each system.ritmo.intenso.die.options as |opt|}}
+                                <option value="{{opt}}" {{#if (eq opt ../system.ritmo.intenso.die.value)}}selected{{/if}}>
+                                    {{opt}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-radio">
+                        <input type="radio"
+                        name="system.selected.ritmo"
+                        value="intenso"
+                        {{#if (eq system.selected.ritmo "intenso")}}checked{{/if}} />
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- DADOS EXTRAS -->
+    <!-- ===================== -->
+    <section class="block extras">
+        
+        <h2>{{localize "TF.fendario.dice-extra.label"}}</h2>
+
+        
+        <!-- EQUIPAMENTO -->
+        <section class="block equipamento">
+            
+            <h2>
+                {{localize "TF.fendario.dice-extra.equipamento.label"}}
+            </h2>
+                    
+
+            <div class="equipamentos-header">
+                
+                <button type="button" class="add-equipamento">
+                <i class="fas fa-plus"></i> {{localize "TF.fendario.botao.adicionar"}}
+                </button>
+            </div>
+
+            <div class="equipamento-col-headers">
+                <span>{{localize "TF.fendario.dice-extra.equipamento.item"}}</span>
+                <span>{{localize "TF.fendario.dice-extra.equipamento.dado-base"}}</span>
+                <span>{{localize "TF.fendario.dice-extra.equipamento.dado-atual"}}</span>
+                <span>{{localize "TF.fendario.dice-extra.equipamento.usar"}}</span>
+                <span></span>
+            </div>
+
+            <div class="equipamento-rows">
+                {{#each system.equipamentos}}
+                <div class="equipamento-row">
+                <input type="text" class="equipamento-item" data-id="{{this.id}}" value="{{this.item}}" placeholder='{{localize "TF.fendario.dice-extra.equipamento.itemPlaceholder"}}' />
+                <select class="equipamento-dado-base" data-id="{{this.id}}">
+                    <option value="d4"  {{#if (eq this.dadoBase "d4")}}selected{{/if}}>d4</option>
+                    <option value="d6"  {{#if (eq this.dadoBase "d6")}}selected{{/if}}>d6</option>
+                    <option value="d8"  {{#if (eq this.dadoBase "d8")}}selected{{/if}}>d8</option>
+                    <option value="d10" {{#if (eq this.dadoBase "d10")}}selected{{/if}}>d10</option>
+                    <option value="d12" {{#if (eq this.dadoBase "d12")}}selected{{/if}}>d12</option>
+                    <option value="d20" {{#if (eq this.dadoBase "d20")}}selected{{/if}}>d20</option>
+                </select>
+                <select class="equipamento-dado-atual" data-id="{{this.id}}">
+                    <option value="d4"  {{#if (eq this.dadoAtual "d4")}}selected{{/if}}>d4</option>
+                    <option value="d6"  {{#if (eq this.dadoAtual "d6")}}selected{{/if}}>d6</option>
+                    <option value="d8"  {{#if (eq this.dadoAtual "d8")}}selected{{/if}}>d8</option>
+                    <option value="d10" {{#if (eq this.dadoAtual "d10")}}selected{{/if}}>d10</option>
+                    <option value="d12" {{#if (eq this.dadoAtual "d12")}}selected{{/if}}>d12</option>
+                    <option value="d20" {{#if (eq this.dadoAtual "d20")}}selected{{/if}}>d20</option>
+                </select>
+
+                <input 
+                    type="radio" 
+                    class="equipamento-selecionado" 
+                    name="equipamento-selecionado" 
+                    data-id="{{this.id}}" 
+                    value="{{this.id}}" 
+                    {{#if (eq this.id ../system.equipamentoSelecionado)}}checked{{/if}} />
+
+                <button type="button" class="remove-equipamento" data-id="{{this.id}}">
+                    <i class="fas fa-trash"></i>
+                </button>
+                </div>
+                {{/each}}
+            </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="block dados-extra-others">
+
+            <div class="grid-3">
+
+                <!-- ESPIRITO -->
+                <div>
+                    <label>{{localize "TF.fendario.dice-extra.espirito"}}</label>
+                    
+                    <div class="radio-group">
+                        {{#each system.dadosExtras.espirito.die.options as |opt|}}
+                        <label class="radio-option">
+                            <input
+                            type="radio"
+                            name="system.dadosExtras.espirito.die.value"
+                            value="{{opt}}"
+                            {{#if (eq opt ../system.dadosExtras.espirito.die.value)}}checked{{/if}}
+                            />
+                            {{opt}}
+                        </label>
+                        {{/each}}
+                    </div>
+                </div>
+                
+
+                <!-- AJUDA -->
+                <div>
+                    <label>{{localize "TF.fendario.dice-extra.ajuda"}}</label>
+                    
+                    <div class="radio-group">
+                        {{#each system.dadosExtras.ajuda.die.options as |opt|}}
+                        <label class="radio-option">
+                            <input
+                            type="radio"
+                            name="system.dadosExtras.ajuda.die.value"
+                            value="{{opt}}"
+                            {{#if (eq opt ../system.dadosExtras.ajuda.die.value)}}checked{{/if}}
+                            />
+                            {{opt}}
+                        </label>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </section>
+
+
+
+
+    <!-- ===================== -->
+    <!-- DADOS DE ATRITO -->
+    <!-- ===================== -->
+    <section class="block oposicao">
+        
+        <h2>{{localize "TF.fendario.atrito.label"}}</h2>
+        
+        <div class="grid-3">
+            
+
+            <div>
+                <label>{{localize "TF.fendario.atrito.dado-1"}}</label>
+                
+                <div class="radio-group">
+                    {{#each system.dadosAtrito.dado1.die.options as |opt|}}
+                    <label class="radio-option">
+                        <input
+                        type="radio"
+                        name="system.dadosAtrito.dado1.die.value"
+                        value="{{opt}}"
+                        {{#if (eq opt ../system.dadosAtrito.dado1.die.value)}}checked{{/if}}
+                        />
+                        {{opt}}
+                    </label>
+                    {{/each}}
+                </div>
+            </div>
+
+
+            <div>
+                <label>{{localize "TF.fendario.atrito.dado-2"}}</label>
+                
+                <div class="radio-group">
+                    {{#each system.dadosAtrito.dado2.die.options as |opt|}}
+                    <label class="radio-option">
+                        <input
+                        type="radio"
+                        name="system.dadosAtrito.dado2.die.value"
+                        value="{{opt}}"
+                        {{#if (eq opt ../system.dadosAtrito.dado2.die.value)}}checked{{/if}}
+                        />
+                        {{opt}}
+                    </label>
+                    {{/each}}
+                </div>
+            </div>
+
+
+            <div>
+                <label>{{localize "TF.fendario.atrito.dado-3"}}</label>
+                
+                <div class="radio-group">
+                    {{#each system.dadosAtrito.dado3.die.options as |opt|}}
+                    <label class="radio-option">
+                        <input
+                        type="radio"
+                        name="system.dadosAtrito.dado3.die.value"
+                        value="{{opt}}"
+                        {{#if (eq opt ../system.dadosAtrito.dado3.die.value)}}checked{{/if}}
+                        />
+                        {{opt}}
+                    </label>
+                    {{/each}}
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <button type="button" class="roll-tf">  {{localize "TF.fendario.botao.rolagem"}} </button>
+
+
+
+
+
+
+
+    <!-- ===================================================================================================================== -->
+
+
+
+
+
+
+
+
+
+    <!-- ===================== -->
+    <!-- LASTRO -->
+    <!-- ===================== -->
+    <section class="block lastro">
+        
+        <h2>{{localize "TF.fendario.lastro.label"}}  </h2>
+        
+
+        <div class="lastro-row">
+            <button type="button" class="lastro-minus">{{localize "TF.fendario.botao.menos"}}</button>
+            <button type="button" class="lastro-plus">{{localize "TF.fendario.botao.mais"}}</button>
+            <span class="lastro-display">
+                <span class="lastro-current">{{system.lastro.current}}</span> / <span class="lastro-max-value"> {{system.lastro.base}}</span>
+            </span>
+        </div>        
+
+        <br>
+        <div>
+            <label>{{localize "TF.fendario.lastro.opt.forcar_limite"}}</label>
+        </div>
+        <div>
+            <label>{{localize "TF.fendario.lastro.opt.resistir"}}</label>
+        </div>
+        <div>
+            <label>{{localize "TF.fendario.lastro.opt.ruptura"}}</label>
+        </div>
+        
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- MALDIÇÃO -->
+    <!-- ===================== -->
+    <section class="block maldicao">
+        <div class="maldicao-block">
+            <h2 class="subtitle">{{localize "TF.fendario.maldicao.label"}}</h2>
+            <textarea
+                name="system.maldicao.value"
+                class="maldicao-field"
+                rows="4"
+                placeholder='{{localize "TF.fendario.maldicao.placeholder"}}'>{{system.maldicao.value}}</textarea>
+        </div>  
+    </section>
+
+
+
+    <!-- ===================== -->
+    <!-- TRUNFOS -->
+    <!-- ===================== -->
+    <section class="block trunfos">
+        
+        <h2>
+            {{localize "TF.fendario.trunfo.label"}}
+        </h2>
+        
+        <div class="trunfos-list">
+            {{#each system.trunfos as |t|}}
+            <div class="trunfo-row" data-trunfo-id="{{t.id}}">
+                
+                <div class="trunfo-header">
+                    <input type="text" class="trunfo-tipo" data-id="{{t.id}}" value="{{t.tipo}}" placeholder='{{localize "TF.fendario.trunfo.tipo"}}' />
+                    <input type="text" class="trunfo-nome" data-id="{{t.id}}" value="{{t.nome}}" placeholder='{{localize "TF.fendario.trunfo.nome"}}' />
+                    <button type="button" class="remove-trunfo" data-id="{{t.id}}">{{localize "TF.fendario.botao.deletar"}}</button>
+                </div>
+                
+                <textarea class="trunfo-descricao" data-id="{{t.id}}" rows="3" placeholder='{{localize "TF.fendario.trunfo.descricao"}}'>{{t.descricao}}</textarea>
+                
+            </div>
+            {{/each}}
+        </div>
+        
+        <button type="button" class="add-trunfo">{{localize "TF.fendario.botao.mais"}}</button>
+        
+    </section>
+
+
+
+
+    <!-- ===================== -->
+    <!-- CICATRIZES -->
+    <!-- ===================== -->
+    <section class="block cicatrizes">
+        
+        <h2>{{localize "TF.fendario.cicatrizes.label"}}</h2>
+        
+        <div class="cicatrizes-row">
+            
+            {{#each system.cicatrizes.slots as |slot i|}}
+            <input type="checkbox"
+            name="system.cicatrizes.slots.{{i}}"
+            {{#if slot}}checked{{/if}} />
+            {{/each}}
+            
+            <label class="morte-label">
+                <input type="checkbox"
+                name="system.cicatrizes.morte"
+                {{#if system.cicatrizes.morte}}checked{{/if}} />
+                {{localize "TF.fendario.cicatrizes.morte"}}
+            </label>
+            
+        </div>
+        
+    </section>
+
+
+
+
+    <!-- ===================== -->
+    <!-- VÍCIO -->
+    <!-- ===================== -->
+    <section class="block vicio">
+        
+        <h2>{{localize "TF.fendario.vicios.label"}}</h2>
+        
+        <div class="vicio-row">
+            
+            {{#each system.vicio.slots as |slot i|}}
+            <input type="checkbox"
+            name="system.vicio.slots.{{i}}"
+            {{#if slot}}checked{{/if}} />
+            {{/each}}
+            
+            <label class="resquimera-label">
+                <input type="checkbox"
+                name="system.vicio.resquimera"
+                {{#if system.vicio.resquimera}}checked{{/if}} />
+                {{localize "TF.fendario.vicios.resquimera"}}
+            </label>
+            
+        </div>
+        
+    </section>
+
+
+
+
+    <!-- ===================== -->
+    <!-- ITEMS -->
+    <!-- ===================== -->
+    <section class="block items">
+        
+
+        <h2>{{localize "TF.fendario.items.label"}}</h2>
+
+        <!-- ===================== -->
+        <!-- CARGA -->
+        <!-- ===================== -->
+        <div class="posses-block">
+            <h3 class="subtitle">{{localize "TF.fendario.items.carga.label"}}</h3>
+            
+            <!-- LEVE -->
+            <div class="carga-row" data-carga-level="leve">
+                <label class="carga-option">
                     <input type="radio"
-                    name="system.selected.eixo"
-                    value="raiz"
-                    {{#if (eq system.selected.eixo "raiz")}}checked{{/if}} />
-                </div>
+                    name="system.items.carga.selected"
+                    value="leve"
+                    {{#if (eq system.items.carga.selected "leve")}}checked{{/if}} />
+                    {{localize "TF.fendario.items.carga.leve"}}
+                    <span class="vantagem">{{localize "TF.fendario.items.carga.vantagem"}}</span>
+                </label>
                 
-            </div>
-            
-            <!-- PULSO -->
-            <div class="stat-row">
-                
-                <div class="stat-select">
-                    <div class="inline-row">
-                        <label>{{localize "TF.fendario.eixo.pulso"}}</label>
-                        
-                        
-                        <!-- Valor Base -->
-                        <select name="system.eixo.pulso.base" class="base-field">
-                            {{#each system.eixo.pulso.die.options as |opt|}}
-                            <option value="{{opt}}"
-                            {{#if (eq opt ../system.eixo.pulso.base)}}selected{{/if}}>
-                            {{opt}}
-                        </option>
-                        {{/each}}
-                    </select>        
-                    
-                    
-                    <select name="system.eixo.pulso.die.value">
-                        {{#each system.eixo.pulso.die.options as |opt|}}
-                        <option value="{{opt}}" {{#if (eq opt ../system.eixo.pulso.die.value)}}selected{{/if}}>
-                            {{opt}}
-                        </option>
-                        {{/each}}
-                    </select>
+                <div class="carga-checkboxes">
+                    {{#each system.items.carga.leve.slots as |slot i|}}
+                    <input type="checkbox"
+                    name="system.items.carga.leve.slots.{{i}}"
+                    {{#if slot}}checked{{/if}} />
+                    {{/each}}
                 </div>
             </div>
             
-            <div class="stat-radio">
-                <input type="radio"
-                name="system.selected.eixo"
-                value="pulso"
-                {{#if (eq system.selected.eixo "pulso")}}checked{{/if}} />
-            </div>
-            
-        </div>
-        
-        <!-- SINTONIA -->
-        <div class="stat-row">
-            
-            <div class="stat-select">
-                <div class="inline-row">
-                    <label>{{localize "TF.fendario.eixo.sintonia"}}</label>
-                    
-                    <!-- Valor Base -->
-                    <select name="system.eixo.sintonia.base" class="base-field">
-                        {{#each system.eixo.sintonia.die.options as |opt|}}
-                        <option value="{{opt}}"
-                        {{#if (eq opt ../system.eixo.sintonia.base)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>        
+            <!-- NORMAL -->
+            <div class="carga-row" data-carga-level="normal">
+                <label class="carga-option">
+                    <input type="radio"
+                    name="system.items.carga.selected"
+                    value="normal"
+                    {{#if (eq system.items.carga.selected "normal")}}checked{{/if}} />
+                    {{localize "TF.fendario.items.carga.normal"}}
+                </label>
                 
+                <div class="carga-checkboxes">
+                    {{#each system.items.carga.normal.slots as |slot i|}}
+                    <input type="checkbox"
+                    name="system.items.carga.normal.slots.{{i}}"
+                    {{#if slot}}checked{{/if}} />
+                    {{/each}}
+                </div>
+            </div>
+            
+            <!-- PESADO -->
+            <div class="carga-row" data-carga-level="pesado">
+                <label class="carga-option">
+                    <input type="radio"
+                    name="system.items.carga.selected"
+                    value="pesado"
+                    {{#if (eq system.items.carga.selected "pesado")}}checked{{/if}} />
+                    {{localize "TF.fendario.items.carga.pesada"}}
+                    <span class="desvantagem">{{localize "TF.fendario.items.carga.desvantagem"}}</span>
+                </label>
                 
+                <div class="carga-checkboxes">
+                    {{#each system.items.carga.pesado.slots as |slot i|}}
+                    <input type="checkbox"
+                    name="system.items.carga.pesado.slots.{{i}}"
+                    {{#if slot}}checked{{/if}} />
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+
+        
+        <!-- ===================== -->
+        <!-- POSSES -->
+        <!-- ===================== -->
+        <div class="posses-block">
+            <h3 class="subtitle">{{localize "TF.fendario.items.posses.label"}}</h3>
+            <textarea
+                name="system.items.posses.value"
+                class="posses-field"
+                rows="4"
+                placeholder='{{localize "TF.fendario.items.posses.placeholder"}}'>{{system.items.posses.value}}</textarea>
+        </div>  
+        
+    </section>
+
+
+    <!-- ===================== -->
+    <!-- VÍNCULOS -->
+    <!-- ===================== -->
+    <section class="block vinculos">
+        
+        <h2>
+            {{localize "TF.fendario.vinculos.label"}}
+        </h2>
+        
+        <div class="vinculos-list">
+            {{#each system.vinculos as |v|}}
+            <div class="vinculo-row" data-vinculo-id="{{v.id}}">
                 
-                <select name="system.eixo.sintonia.die.value">
-                    {{#each system.eixo.sintonia.die.options as |opt|}}
-                    <option value="{{opt}}" {{#if (eq opt ../system.eixo.sintonia.die.value)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>
-            </div>
-        </div>
-        
-        <div class="stat-radio">
-            <input type="radio"
-            name="system.selected.eixo"
-            value="sintonia"
-            {{#if (eq system.selected.eixo "sintonia")}}checked{{/if}} />
-        </div>
-        
-    </div>
-    
-    <!-- ARTIFICIO -->
-    <div class="stat-row">
-        
-        <div class="stat-select">
-            <div class="inline-row">
-                <label>{{localize "TF.fendario.eixo.artificio"}}</label>
+                <input type="text" class="vinculo-texto" data-id="{{v.id}}" value="{{v.texto}}" placeholder='{{localize "TF.fendario.vinculos.placeholder"}}' />
+                <button type="button" class="remove-vinculo" data-id="{{v.id}}">🗑</button>
                 
-                <!-- Valor Base -->
-                <select name="system.eixo.artificio.base" class="base-field">
-                    {{#each system.eixo.artificio.die.options as |opt|}}
-                    <option value="{{opt}}"
-                    {{#if (eq opt ../system.eixo.artificio.base)}}selected{{/if}}>
-                    {{opt}}
-                </option>
-                {{/each}}
-            </select>        
-            
-            
-            <select name="system.eixo.artificio.die.value">
-                {{#each system.eixo.artificio.die.options as |opt|}}
-                <option value="{{opt}}" {{#if (eq opt ../system.eixo.artificio.die.value)}}selected{{/if}}>
-                    {{opt}}
-                </option>
-                {{/each}}
-            </select>
-        </div>
-    </div>
-    
-    <div class="stat-radio">
-        <input type="radio"
-        name="system.selected.eixo"
-        value="artificio"
-        {{#if (eq system.selected.eixo "artificio")}}checked{{/if}} />
-    </div>
-    
-</div>
-
-</div>
-
-
-<!-- ===================== -->
-<!-- RITMO -->
-<!-- ===================== -->
-<h2>Ritmo</h2>
-
-<div class="ritmo-container">
-    
-    <!-- ÁGIL -->
-    <div class="stat-row">
-        
-        <div class="stat-select">
-            <div class="inline-row">
-                <label>{{localize "TF.fendario.ritmo.agil"}}</label>
-                <select name="system.ritmo.agil.die.value">
-                    {{#each system.ritmo.agil.die.options as |opt|}}
-                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.agil.die.value)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>
             </div>
+            {{/each}}
         </div>
         
-        <div class="stat-radio">
-            <input type="radio"
-            name="system.selected.ritmo"
-            value="agil"
-            {{#if (eq system.selected.ritmo "agil")}}checked{{/if}} />
-        </div>
+        <button type="button" class="add-vinculo">➕</button>
         
-    </div>
-    
-    <!-- CUIDADOSO -->
-    <div class="stat-row">
+    </section>  
+
+
+
+
+
+    <!-- ===================== -->
+    <!-- RESSONÂNCIA -->
+    <!-- ===================== -->
+    <section class="block ressonancia">
         
-        <div class="stat-select">
-            <div class="inline-row">
-                <label>{{localize "TF.fendario.ritmo.cuidadoso"}}</label>
-                <select name="system.ritmo.cuidadoso.die.value">
-                    {{#each system.ritmo.cuidadoso.die.options as |opt|}}
-                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.cuidadoso.die.value)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>
-            </div>
-        </div>
+        <h2>
+            {{localize "TF.fendario.ressonancia.label"}}
+        </h2>
         
-        <div class="stat-radio">
-            <input type="radio"
-            name="system.selected.ritmo"
-            value="cuidadoso"
-            {{#if (eq system.selected.ritmo "cuidadoso")}}checked{{/if}} />
-        </div>
-        
-    </div>
-    
-    <!-- ESPERTO -->
-    <div class="stat-row">
-        
-        <div class="stat-select">
-            <div class="inline-row">
-                <label>{{localize "TF.fendario.ritmo.esperto"}}</label>
-                <select name="system.ritmo.esperto.die.value">
-                    {{#each system.ritmo.esperto.die.options as |opt|}}
-                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.esperto.die.value)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>
-            </div>
-        </div>
-        
-        <div class="stat-radio">
-            <input type="radio"
-            name="system.selected.ritmo"
-            value="esperto"
-            {{#if (eq system.selected.ritmo "esperto")}}checked{{/if}} />
-        </div>
-        
-    </div>
-    
-    <!-- INTENSO -->
-    <div class="stat-row">
-        
-        <div class="stat-select">
-            <div class="inline-row">
-                <label>{{localize "TF.fendario.ritmo.intenso"}}</label>
-                <select name="system.ritmo.intenso.die.value">
-                    {{#each system.ritmo.intenso.die.options as |opt|}}
-                    <option value="{{opt}}" {{#if (eq opt ../system.ritmo.intenso.die.value)}}selected{{/if}}>
-                        {{opt}}
-                    </option>
-                    {{/each}}
-                </select>
-            </div>
-        </div>
-        
-        <div class="stat-radio">
-            <input type="radio"
-            name="system.selected.ritmo"
-            value="intenso"
-            {{#if (eq system.selected.ritmo "intenso")}}checked{{/if}} />
-        </div>
-        
-    </div>
-    
-</div>
-
-
-</div>
-
-</section>
-
-
-
-
-
-<!-- ===================== -->
-<!-- LASTRO -->
-<!-- ===================== -->
-<section class="block lastro">
-    
-    <h2>{{localize "TF.fendario.lastro.label"}}  </h2>
-    
-
-    <div class="lastro-row">
-        <button type="button" class="lastro-minus">−</button>
-        <button type="button" class="lastro-plus">+</button>
-        <span class="lastro-display">
-            <span class="lastro-current">{{system.lastro.current}}</span> / <span class="lastro-max-value"> {{system.lastro.base}}</span>
-        </span>
-    </div>        
-
-    <br>
-    <div>
-        <label>{{localize "TF.fendario.lastro.opt.forcar_limite"}}</label>
-    </div>
-    <div>
-        <label>{{localize "TF.fendario.lastro.opt.resistir"}}</label>
-    </div>
-    <div>
-        <label>{{localize "TF.fendario.lastro.opt.ruptura"}}</label>
-    </div>
-    
-</section>
-
-
-
-<!-- ===================== -->
-<!-- MALDIÇÃO -->
-<!-- ===================== -->
-<section class="block maldicao">
-    <div class="maldicao-block">
-        <h2 class="subtitle">{{localize "TF.fendario.maldicao.label"}}</h2>
-        <textarea
-            name="system.maldicao.value"
-            class="maldicao-field"
-            rows="4"
-            placeholder='{{localize "TF.fendario.maldicao.placeholder"}}'>{{system.maldicao.value}}</textarea>
-    </div>  
-</section>
-
-
-
-<!-- ===================== -->
-<!-- TRUNFOS -->
-<!-- ===================== -->
-<section class="block trunfos">
-    
-    <h2>
-        {{localize "TF.fendario.trunfo.label"}}
-    </h2>
-    
-    <div class="trunfos-list">
-        {{#each system.trunfos as |t|}}
-        <div class="trunfo-row" data-trunfo-id="{{t.id}}">
-            
-            <div class="trunfo-header">
-                <input type="text" class="trunfo-tipo" data-id="{{t.id}}" value="{{t.tipo}}" placeholder='{{localize "TF.fendario.trunfo.tipo"}}' />
-                <input type="text" class="trunfo-nome" data-id="{{t.id}}" value="{{t.nome}}" placeholder='{{localize "TF.fendario.trunfo.nome"}}' />
-                <button type="button" class="remove-trunfo" data-id="{{t.id}}">{{localize "TF.fendario.botao.deletar"}}</button>
-            </div>
-            
-            <textarea class="trunfo-descricao" data-id="{{t.id}}" rows="3" placeholder='{{localize "TF.fendario.trunfo.descricao"}}'>{{t.descricao}}</textarea>
-            
-        </div>
-        {{/each}}
-    </div>
-    
-    <button type="button" class="add-trunfo">➕</button>
-    
-</section>
-
-
-
-
-<!-- ===================== -->
-<!-- CICATRIZES -->
-<!-- ===================== -->
-<section class="block cicatrizes">
-    
-    <h2>{{localize "TF.fendario.cicatrizes.label"}}</h2>
-    
-    <div class="cicatrizes-row">
-        
-        {{#each system.cicatrizes.slots as |slot i|}}
-        <input type="checkbox"
-        name="system.cicatrizes.slots.{{i}}"
-        {{#if slot}}checked{{/if}} />
-        {{/each}}
-        
-        <label class="morte-label">
+        <div class="ressonancia-row">
+            {{#each system.ressonancia.slots as |slot i|}}
             <input type="checkbox"
-            name="system.cicatrizes.morte"
-            {{#if system.cicatrizes.morte}}checked{{/if}} />
-            {{localize "TF.fendario.cicatrizes.morte"}}
-        </label>
-        
-    </div>
-    
-</section>
-
-
-
-
-<!-- ===================== -->
-<!-- VÍCIO -->
-<!-- ===================== -->
-<section class="block vicio">
-    
-    <h2>{{localize "TF.fendario.vicios.label"}}</h2>
-    
-    <div class="vicio-row">
-        
-        {{#each system.vicio.slots as |slot i|}}
-        <input type="checkbox"
-        name="system.vicio.slots.{{i}}"
-        {{#if slot}}checked{{/if}} />
-        {{/each}}
-        
-        <label class="resquimera-label">
-            <input type="checkbox"
-            name="system.vicio.resquimera"
-            {{#if system.vicio.resquimera}}checked{{/if}} />
-            {{localize "TF.fendario.vicios.resquimera"}}
-        </label>
-        
-    </div>
-    
-</section>
-
-
-
-
-<!-- ===================== -->
-<!-- ITEMS -->
-<!-- ===================== -->
-<section class="block items">
-    
-
-    <h2>{{localize "TF.fendario.items.label"}}</h2>
-
-    <!-- ===================== -->
-    <!-- CARGA -->
-    <!-- ===================== -->
-    <div class="posses-block">
-        <h3 class="subtitle">{{localize "TF.fendario.items.carga.label"}}</h3>
-        
-        <!-- LEVE -->
-        <div class="carga-row" data-carga-level="leve">
-            <label class="carga-option">
-                <input type="radio"
-                name="system.items.carga.selected"
-                value="leve"
-                {{#if (eq system.items.carga.selected "leve")}}checked{{/if}} />
-                {{localize "TF.fendario.items.carga.leve"}}
-                <span class="vantagem">{{localize "TF.fendario.items.carga.vantagem"}}</span>
-            </label>
+            name="system.ressonancia.slots.{{i}}"
+            {{#if slot}}checked{{/if}} />
+            {{/each}}
             
-            <div class="carga-checkboxes">
-                {{#each system.items.carga.leve.slots as |slot i|}}
-                <input type="checkbox"
-                name="system.items.carga.leve.slots.{{i}}"
-                {{#if slot}}checked{{/if}} />
-                {{/each}}
-            </div>
+            <button type="button" class="clear-ressonancia" title="Limpar">{{localize "TF.fendario.botao.limpar"}}</button>
         </div>
         
-        <!-- NORMAL -->
-        <div class="carga-row" data-carga-level="normal">
-            <label class="carga-option">
-                <input type="radio"
-                name="system.items.carga.selected"
-                value="normal"
-                {{#if (eq system.items.carga.selected "normal")}}checked{{/if}} />
-                {{localize "TF.fendario.items.carga.normal"}}
-            </label>
-            
-            <div class="carga-checkboxes">
-                {{#each system.items.carga.normal.slots as |slot i|}}
-                <input type="checkbox"
-                name="system.items.carga.normal.slots.{{i}}"
-                {{#if slot}}checked{{/if}} />
-                {{/each}}
-            </div>
+        
+        
+        <div class="ressonancia-pontos">
+            <label>{{localize "TF.fendario.ressonancia.avanco"}}</label>
+            <input type="number" name="system.ressonancia.pontosAvanco" value="{{system.ressonancia.pontosAvanco}}" />
         </div>
         
-        <!-- PESADO -->
-        <div class="carga-row" data-carga-level="pesado">
-            <label class="carga-option">
-                <input type="radio"
-                name="system.items.carga.selected"
-                value="pesado"
-                {{#if (eq system.items.carga.selected "pesado")}}checked{{/if}} />
-                {{localize "TF.fendario.items.carga.pesada"}}
-                <span class="desvantagem">{{localize "TF.fendario.items.carga.desvantagem"}}</span>
-            </label>
-            
-            <div class="carga-checkboxes">
-                {{#each system.items.carga.pesado.slots as |slot i|}}
-                <input type="checkbox"
-                name="system.items.carga.pesado.slots.{{i}}"
-                {{#if slot}}checked{{/if}} />
-                {{/each}}
-            </div>
-        </div>
-    </div>
-
-
-    
-    <!-- ===================== -->
-    <!-- POSSES -->
-    <!-- ===================== -->
-    <div class="posses-block">
-        <h3 class="subtitle">{{localize "TF.fendario.items.posses.label"}}</h3>
-        <textarea
-            name="system.items.posses.value"
-            class="posses-field"
-            rows="4"
-            placeholder='{{localize "TF.fendario.items.posses.placeholder"}}'>{{system.items.posses.value}}</textarea>
-    </div>  
-    
-</section>
-
-
-<!-- ===================== -->
-<!-- VÍNCULOS -->
-<!-- ===================== -->
-<section class="block vinculos">
-    
-    <h2>
-        {{localize "TF.fendario.vinculos.label"}}
-    </h2>
-    
-    <div class="vinculos-list">
-        {{#each system.vinculos as |v|}}
-        <div class="vinculo-row" data-vinculo-id="{{v.id}}">
-            
-            <input type="text" class="vinculo-texto" data-id="{{v.id}}" value="{{v.texto}}" placeholder='{{localize "TF.fendario.vinculos.placeholder"}}' />
-            <button type="button" class="remove-vinculo" data-id="{{v.id}}">🗑</button>
-            
-        </div>
-        {{/each}}
-    </div>
-    
-    <button type="button" class="add-vinculo">➕</button>
-    
-</section>  
-
-
-
-
-
-<!-- ===================== -->
-<!-- RESSONÂNCIA -->
-<!-- ===================== -->
-<section class="block ressonancia">
-    
-    <h2>
-        {{localize "TF.fendario.ressonancia.label"}}
-    </h2>
-    
-    <div class="ressonancia-row">
-        {{#each system.ressonancia.slots as |slot i|}}
-        <input type="checkbox"
-        name="system.ressonancia.slots.{{i}}"
-        {{#if slot}}checked{{/if}} />
-        {{/each}}
         
-        <button type="button" class="clear-ressonancia" title="Limpar">{{localize "TF.fendario.botao.limpar"}}</button>
-    </div>
-    
-    
-    
-    <div class="ressonancia-pontos">
-        <label>{{localize "TF.fendario.ressonancia.avanco"}}</label>
-        <input type="number" name="system.ressonancia.pontosAvanco" value="{{system.ressonancia.pontosAvanco}}" />
-    </div>
-    
-    
-    
-</section>
-
-
-
-<!-- ===================== -->
-<!-- DADOS EXTRAS -->
-<!-- ===================== -->
-<section class="block extras">
-    
-    <h2>{{localize "TF.fendario.dice-extra.label"}}</h2>
-    
-    <div class="grid-3">
         
-        <div>
-            <label>{{localize "TF.fendario.dice-extra.equipamento"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosExtras.equipamento.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosExtras.equipamento.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosExtras.equipamento.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-        
-        <div>
-            <label>{{localize "TF.fendario.dice-extra.espirito"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosExtras.espirito.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosExtras.espirito.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosExtras.espirito.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-        
-        <div>
-            <label>{{localize "TF.fendario.dice-extra.ajuda"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosExtras.ajuda.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosExtras.ajuda.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosExtras.ajuda.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
 
 
-<!-- ===================== -->
-<!-- DADOS DE ATRITO -->
-<!-- ===================== -->
-<section class="block oposicao">
-    
-    <h2>{{localize "TF.fendario.atrito.label"}}</h2>
-    
-    <div class="grid-3">
-        
-
-        <div>
-            <label>{{localize "TF.fendario.atrito.dado-1"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosAtrito.dado1.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosAtrito.dado1.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosAtrito.dado1.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-
-
-        <div>
-            <label>{{localize "TF.fendario.atrito.dado-2"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosAtrito.dado2.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosAtrito.dado2.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosAtrito.dado2.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-
-
-        <div>
-            <label>{{localize "TF.fendario.atrito.dado-3"}}</label>
-            
-            <div class="radio-group">
-                {{#each system.dadosAtrito.dado3.die.options as |opt|}}
-                <label class="radio-option">
-                    <input
-                    type="radio"
-                    name="system.dadosAtrito.dado3.die.value"
-                    value="{{opt}}"
-                    {{#if (eq opt ../system.dadosAtrito.dado3.die.value)}}checked{{/if}}
-                    />
-                    {{opt}}
-                </label>
-                {{/each}}
-            </div>
-        </div>
-
-
-    </div>
-</section>
-
-
-
-<button type="button" class="roll-tf">  {{localize "TF.fendario.botao.rolagem"}} </button>
 
 
 

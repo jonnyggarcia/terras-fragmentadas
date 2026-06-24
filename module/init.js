@@ -61,8 +61,8 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
         const defaults = {
             "system.selected": { eixo: "raiz", ritmo: "agil" },
             "system.jogador": "",
-            "system.povo": "",
-            "system.registro": "",
+            "system.povo": game.i18n.localize("TF.povo.humano"), 
+            "system.registro": game.i18n.localize("TF.povo.nauta"), 
             "system.eixo": {
                 raiz: { label: "Raiz", die: { value: "d4", options: ["d4", "d6", "d8", "d10", "d12"] } },
                 pulso: { label: "Pulso", die: { value: "d4", options: ["d4", "d6", "d8", "d10", "d12"] } },

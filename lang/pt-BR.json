@@ -5,13 +5,31 @@
     "ACTOR.TypeAmeaca": "Ameaça",  
     
     "TF": {
+        "povo": {
+            "humano": "Humano",
+            "ayana": "Ayana",
+            "baax": "Baax",
+            "chartergus": "Chartergus",
+            "guldari": "Guldari",
+            "illiam": "Illiam",
+            "namnaram": "Nam'naram"
+        },
+        "registro": {
+            "aco" : "Aço",
+            "codice" : "Códice",
+            "elo" : "Elo",
+            "nauta" : "Nauta",
+            "numemante" : "Numemante",
+            "numetecnico" : "Numetécnico",
+            "rastro" : "Rastro"
+        },        
         "fendario": {
             "identidade" : {
                 "label" : "Identidade",
                 "personagem" : "Personagem",
                 "jogador" : "Jogador",
                 "povo" : "Povo",
-                "registro" : "Registro" 
+                "registro" : "Registro"              
             },
             "eixo": {
                 "label" : "Eixo",
@@ -42,7 +60,10 @@
                 "placeholder" : "Descreva sua Maldição"
             },
             "trunfo": {
-                "label" : "Trunfo"
+                "label" : "Trunfo",
+                "tipo" : "Tipe",
+                "nome" : "Nome",
+                "descricao" : "Descrição"
             },
             "cicatrizes": {
                 "label" : "Cicatrizes",
@@ -68,7 +89,8 @@
                 }
             },
             "vinculos" : {
-                "label" : "Vínculos"
+                "label" : "Vínculos",
+                "placeholder" : "Vínculo"
             },
             "ressonancia" : {
                 "label" : "Ressonância",
@@ -76,7 +98,14 @@
             },
             "dice-extra" : {
                 "label" : "Dados Extra",
-                "equipamento" : "Equipamento",
+                "equipamento" : {
+                    "label": "EQUIPAMENTOS",
+                    "item" : "ITEM",
+                    "itemPlaceholder" : "Nome do item…",
+                    "dado-base" : "DADO BASE",
+                    "dado-atual" : "DADO ATUAL",
+                    "usar" : "USAR"
+                },
                 "espirito" : "Espírito",
                 "ajuda" : "Ajuda"
             },
@@ -90,7 +119,10 @@
                 "rolagem" : "🎲 Rolar Dados",
                 "editar" : "Editar",
                 "limpar" : "🧹",
-                "deletar" : "🗑"
+                "deletar" : "🗑",
+                "adicionar" : "adicionar",
+                "menos" : "-",
+                "mais" : "+"
             }
         },
 
@@ -170,6 +202,28 @@
             "especiais" : {
                 "label": "Especiais"
             }
+        }
+    },
+
+    "TEXTO": {
+        "rolagem" :{
+            "acao": " - rolagem",
+            "identidade": "Dados de Identidade",
+            "atrito": "Atrito",
+            "totais": "Totais",
+            "total-sucesso": "Total de sucessos:",             
+            "katastrofe": "KATASTROFE",
+            "impacto": {
+                "esptacular" : "Impacto  Espetacular",
+                "positivo" : "Impacto Positivo",
+                "neutro" : "Impacto Neutro",
+                "negativo" : "Impacto Negativo",
+                "desastroso" : "Impacto Desastroso"
+            }
+        },
+        "anuncio" :{
+            "bloqueado" : "Valor Base bloqueado",
+            "desbloqueado" : "Valor Base desbloqueado"
         }
     }
 }

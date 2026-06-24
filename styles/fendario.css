@@ -58,6 +58,172 @@
 
 
 /* ===================== */
+/* EIXO RITIMO  */
+/* ===================== */
+
+
+.block.eixo-ritmo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* space between the two subblocks */
+}
+
+.block.eixo-ritmo .subblock {
+    flex: 1; /* both take equal width */
+}
+
+
+/* ===================== */
+/* DADOS EXTRA - EQUIPAMENTO */
+/* ===================== */
+/* ── Equipamentos Section ─────────────────────────── */
+
+.equipamentos-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.equipamentos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.equipamentos-title {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Column headers */
+.equipamento-col-headers {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 36px;
+    gap: 6px;
+    padding: 2px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Each row — single line */
+.equipamento-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 36px;
+    gap: 6px;
+    align-items: center;
+    padding: 3px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.equipamento-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Text input */
+.equipamento-row .equipamento-item {
+    width: 100%;
+    height: 26px;
+    padding: 0 6px;
+    font-size: 12px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.equipamento-row .equipamento-item::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.equipamento-row .equipamento-item:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+/* Both dropdowns */
+.equipamento-row .equipamento-dado-base,
+.equipamento-row .equipamento-dado-atual {
+    width: 100%;
+    height: 26px;
+    padding: 0 4px;
+    font-size: 12px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.equipamento-row .equipamento-dado-base:focus,
+.equipamento-row .equipamento-dado-atual:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+/* Radio group — keep both options on one line */
+.equipamento-tipo-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.equipamento-tipo-group label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0;
+}
+
+.equipamento-tipo-group input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+    accent-color: #ffffff;
+}
+
+/* Delete button */
+.remove-equipamento {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.remove-equipamento:hover {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.15);
+}
+
+/* Add button */
+.add-equipamento {
+    font-size: 12px;
+    padding: 3px 10px;
+    cursor: pointer;
+    color: #ffffff;
+    width: 200px;
+}
+
+/* ===================== */
 /* LASTRO */
 /* ===================== */
 

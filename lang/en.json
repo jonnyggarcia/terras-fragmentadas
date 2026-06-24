@@ -5,13 +5,31 @@
     "ACTOR.TypeAmeaca": "Ameaça",  
     
     "TF": {
+        "povo": {
+            "humano": "Humano",
+            "ayana": "Ayana",
+            "baax": "Baax",
+            "chartergus": "Chartergus",
+            "guldari": "Guldari",
+            "illiam": "Illiam",
+            "namnaram": "Nam'naram"
+        },
+        "registro": {
+            "aco" : "Aço",
+            "codice" : "Códice",
+            "elo" : "Elo",
+            "nauta" : "Nauta",
+            "numemante" : "Numemante",
+            "numetecnico" : "Numetécnico",
+            "rastro" : "Rastro"
+        },        
         "fendario": {
             "identidade" : {
                 "label" : "Identidade",
                 "personagem" : "Personagem",
                 "jogador" : "Jogador",
                 "povo" : "Povo",
-                "registro" : "Registro" 
+                "registro" : "Registro"              
             },
             "eixo": {
                 "label" : "Eixo",
@@ -80,7 +98,14 @@
             },
             "dice-extra" : {
                 "label" : "Dados Extra",
-                "equipamento" : "Equipamento",
+                "equipamento" : {
+                    "label": "EQUIPAMENTOS",
+                    "item" : "ITEM",
+                    "itemPlaceholder" : "Nome do item…",
+                    "dado-base" : "DADO BASE",
+                    "dado-atual" : "DADO ATUAL",
+                    "usar" : "USAR"
+                },
                 "espirito" : "Espírito",
                 "ajuda" : "Ajuda"
             },
@@ -94,7 +119,10 @@
                 "rolagem" : "🎲 Rolar Dados",
                 "editar" : "Editar",
                 "limpar" : "🧹",
-                "deletar" : "🗑"
+                "deletar" : "🗑",
+                "adicionar" : "adicionar",
+                "menos" : "-",
+                "mais" : "+"
             }
         },
 

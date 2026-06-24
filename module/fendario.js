@@ -66,19 +66,32 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
             "black"
         );
         
-        addCore(
-            "Equipamento",
-            system?.dadosExtras?.equipamento?.die?.value,
-            system?.dadosExtras?.equipamento?.die?.value,
-            "blue"
+        const equipamentoSelecionado = (system?.equipamentos || []).find(
+            e => e.id === system?.equipamentoSelecionado
         );
+
+        if (equipamentoSelecionado) {
+            addCore(
+                `Equipamento (${equipamentoSelecionado.item})`,
+                equipamentoSelecionado.dadoAtual,
+                equipamentoSelecionado.dadoAtual,
+                "blue"
+            );
+        }
         
-        addCore(
-            "Espírito",
-            system?.dadosExtras?.espirito?.die?.value,
-            system?.dadosExtras?.espirito?.die?.value,
-            "purple"
-        );
+        // Espírito — check lastro
+        let lastroMsg = "";
+        const lastroAtual = system?.lastro?.current ?? 0;
+        const espiritoDie = system?.dadosExtras?.espirito?.die?.value;
+
+        if (espiritoDie && espiritoDie !== "none") {
+            if (lastroAtual > 0) {
+                addCore("Espírito", espiritoDie, espiritoDie, "purple");
+                lastroMsg = "(-1 lastro)";
+            } else {
+                lastroMsg = "não há lastro";
+            }
+        }
         
         addCore(
             "Ajuda",
@@ -100,32 +113,54 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         let coreSuccesses = 0;
         let coreOnes = 0;
+        const consequencias = [];
         
         let coreHTML = `<h3>`+game.i18n.localize("TEXTO.rolagem.identidade")+`</h3><ul>`;
         
         for (const p of core) {
             const roll = new Roll(`1d${p.sides}`);
             await roll.evaluate();
-            
+
             const total = roll.total;
-            
+
             const success = total >= 5;
             if (success) coreSuccesses++;
-            
             if (total === 1) coreOnes++;
-            
+
+            if (total === 1) {
+                if (p.color === "purple") consequencias.push("Dissonância (Espírito)");
+                if (p.color === "blue")   consequencias.push(`Sobrecarrega (Equipamento, ${equipamentoSelecionado?.item ?? ""})`);
+                if (p.color === "orange") consequencias.push("Rico Compartilhado (Ajuda)");
+            }
+
+            const resultColor = total === 1 ? "red" : success ? "green" : "black";
+            const extraMsg = p.color === "purple" && lastroMsg === "(-1 lastro)"
+                ? ` <span style="color:orange;">(-1 lastro)</span>`
+                : "";
+
             coreHTML += `
                 <li>
                 <strong style="color:${p.color}">
                     ${p.label} (${p.type})
                 </strong>
                 :
-                <span style="color:${success ? "green" : "black"}">
+                <span style="color:${resultColor}">
                     ${total}
-                </span>
+                </span>${extraMsg}
                 </li>
             `;
-            }
+        }
+
+        // Add "Não há lastro" message if espírito was skipped
+        if (espiritoDie && espiritoDie !== "none" && lastroAtual <= 0) {
+            coreHTML += `
+                <li>
+                    <strong style="color:purple;">Espírito</strong> :
+                    <span style="color:red;">Não há lastro</span>
+                </li>
+            `;
+        }
+
         
         coreHTML += `</ul>`;
         
@@ -152,10 +187,24 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
                 </span>
                 </li>
             `;
-            }
+        }
         
         atritoHTML += `</ul>`;
+
         
+        // =====================
+        // CONSEQUÊNCIAS
+        // =====================
+        let consequenciasHTML = "";
+
+        if (consequencias.length > 0) {
+            consequenciasHTML += `<hr><h3>Consequências</h3><ul>`;
+            for (const label of consequencias) {
+                consequenciasHTML += `<li style="color:red;"><strong>${label}</strong></li>`;
+            }
+            consequenciasHTML += `</ul>`;
+        }
+
         // =====================
         // FINAL RULES
         // =====================
@@ -186,16 +235,20 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
         // =====================
         // OUTPUT
         // =====================
+
+        // Then in the final html assembly:
         let html = `<h2>${actor.name}`+game.i18n.localize("TEXTO.rolagem.acao")+`</h2>`;
         html += coreHTML;
         html += `<hr>`;
         html += atritoHTML;
-        
+        html += consequenciasHTML;  // <-- add this line
+
         html += `
             <hr>
             <h3>`+game.i18n.localize("TEXTO.rolagem.totais")+`</h3>
             <p><strong>`+game.i18n.localize("TEXTO.rolagem.total-sucesso")+`</strong> ${finalSuccesses} - ${impact}</p>
         `;
+
                 
         if (isKatastrofe) {
             html += `
@@ -222,19 +275,25 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
         // RESET AFTER ROLL
         // =====================
         const updateData = {};
-        
+
         const extras = system?.dadosExtras || {};
         for (const k of Object.keys(extras)) {
             updateData[`system.dadosExtras.${k}.die.value`] = "none";
         }
-        
+
         const atritoReset = system?.dadosAtrito || {};
         for (const k of Object.keys(atritoReset)) {
             updateData[`system.dadosAtrito.${k}.die.value`] = "none";
         }
-        
-        await actor.update(updateData);
-        
+
+        updateData["system.equipamentoSelecionado"] = "";
+
+        // Reduce lastro if Espírito was rolled
+        if (espiritoDie && espiritoDie !== "none" && lastroAtual > 0) {
+            updateData["system.lastro.current"] = lastroAtual - 1;
+        }
+
+        await actor.update(updateData);    
     }
     
     
@@ -272,6 +331,64 @@ export class FendarioSheet extends foundry.appv1.sheets.ActorSheet {
         });
         
         
+
+        // =====================
+        // EQUIPAMENTO
+        // =====================
+    
+        // Add
+        html.find(".add-equipamento").on("click", async () => {
+            const equipamentos = foundry.utils.deepClone(this.actor.system.equipamentos || []);
+            equipamentos.push({
+                id: foundry.utils.randomID(),
+                item: "",
+                dadoBase: "d6",
+                dadoAtual: "d6"
+            });
+            await this.actor.update({ "system.equipamentos": equipamentos });
+        });
+
+        // Remove
+        html.find(".remove-equipamento").on("click", async (event) => {
+            const id = event.currentTarget.dataset.id;
+            const equipamentos = (this.actor.system.equipamentos || []).filter(e => e.id !== id);
+            const selecionado = this.actor.system.equipamentoSelecionado === id ? "" : this.actor.system.equipamentoSelecionado;
+            await this.actor.update({ "system.equipamentos": equipamentos, "system.equipamentoSelecionado": selecionado });
+        });
+
+        // Item
+        html.find(".equipamento-item").on("change", async (event) => {
+            const id = event.currentTarget.dataset.id;
+            const equipamentos = foundry.utils.deepClone(this.actor.system.equipamentos || []);
+            const entry = equipamentos.find(e => e.id === id);
+            if (entry) entry.item = event.currentTarget.value;
+            await this.actor.update({ "system.equipamentos": equipamentos });
+        });
+
+        // Dado Base
+        html.find(".equipamento-dado-base").on("change", async (event) => {
+            const id = event.currentTarget.dataset.id;
+            const equipamentos = foundry.utils.deepClone(this.actor.system.equipamentos || []);
+            const entry = equipamentos.find(e => e.id === id);
+            if (entry) entry.dadoBase = event.currentTarget.value;
+            await this.actor.update({ "system.equipamentos": equipamentos });
+        });
+
+        // Dado Atual
+        html.find(".equipamento-dado-atual").on("change", async (event) => {
+            const id = event.currentTarget.dataset.id;
+            const equipamentos = foundry.utils.deepClone(this.actor.system.equipamentos || []);
+            const entry = equipamentos.find(e => e.id === id);
+            if (entry) entry.dadoAtual = event.currentTarget.value;
+            await this.actor.update({ "system.equipamentos": equipamentos });
+        });
+
+        // Select active equipment — mousedown to beat Foundry's re-render
+        html.find(".equipamento-selecionado").on("mousedown", async (event) => {
+            const id = event.currentTarget.dataset.id;
+            await this.actor.update({ "system.equipamentoSelecionado": id });
+        }); 
+
         // =====================
         // LASTRO
         // =====================
